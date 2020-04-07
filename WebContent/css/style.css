@@ -10,6 +10,6 @@ body {
   margin: auto;
   padding: 20px 0;
   background-color: #fffefe;
-  min-height: calc(100vh - 120px);
+  max-height: calc(100vh - 120px);
   border: 1px solid #dbd9d9;
 }
