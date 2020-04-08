@@ -1,7 +1,11 @@
-html {
-  font-family: Arial;
-  font-size: 14px;
-  color: #ff79c6;
+body {
+  font-family: Arial !important;
+  font-size: 14px !important;
+  color: #ff79c6 !important;
+  background-color: #44475a !important;
+}
+.navbar {
+  display: none !important;
 }
 
 header {
@@ -24,13 +28,31 @@ header {
   font-weight: bold;
   text-align: center;
   cursor: pointer;
-  padding: 26px 0;
+  padding: 23px 0px 24px 0px;
 }
 .menu__text:hover {
   background-color: #44475a;
   color: #ff79c6;
 }
 
-body {
-  background-color: #282a36;
+.formulario {
+  width: 423px;
+  border: solid 1px #50fa7b;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+@media screen and (max-width: 678px) {
+  /* menu */
+  .menu {
+    display: none;
+  }
+  .navbar {
+    display: block !important;
+    background-color: #50fa7b !important;
+  }
+  .bg {
+    background-color: #50fa7b !important;
+    position: relative;
+  }
 }
