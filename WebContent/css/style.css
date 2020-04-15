@@ -65,6 +65,16 @@ header {
   padding: 30px;
 }
 
+.-flexcenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.-agendamento-card {
+  width: 600px;
+}
+
 @media screen and (max-width: 678px) {
   /* menu */
   header {

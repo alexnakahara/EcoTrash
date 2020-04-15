@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>EcoTrash</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="js/index.js"></script>
+</head>
+
+<body>
+
+  <div class="container -flexcenter">
+    <div class="panel panel-primary -agendamento-card">
+      <div class="panel-heading">Agendamento</div>
+      <form class="panel-body" method="post" action="Agendamento.do">
+        <div class="form-group">
+          <label class="control-label">Dia e horário de coleta</label>
+          <div class="input-group date" id="datetimepicker1">
+            <input type="text" class="form-control" id="dt" name="dt_agendamento" />
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label text-center">Título</label>
+              <input type="text" class="form-control" name="titulo" id="titulo">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Comentários adicionais</label>
+              <input type="text" class="form-control" name="descricao" id="descricao">
+            </div>
+          </div>
+        </div>
+        <div class="row -flexcenter">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Email cliente</label>
+              <input type="email" placeholder="Seu número de cliente" class="form-control" name="email" id="email">
+
+            </div>
+          </div>
+        </div>
+        <div class="-flexcenter">
+
+          <input type="submit" class="btn btn-primary" onclick="onSubmit()" value="Agendar!">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+
+</html>
