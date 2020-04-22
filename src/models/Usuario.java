@@ -7,6 +7,9 @@ public class Usuario {
 private String tx_nome;
 private String tx_email;
 private String tx_dtnascimento;
+private String tx_senha;
+
+public Usuario() {}
 
 public Usuario(String tx_nome, String tx_email, String tx_dtnascimento) {
 	this.tx_nome = tx_nome;
@@ -36,6 +39,14 @@ public String getTx_dtnascimento() {
 
 public void setTx_dtnascimento(String tx_dtnascimento) {
 	this.tx_dtnascimento = tx_dtnascimento;
+}
+
+public String getTx_senha() {
+	return tx_senha;
+}
+
+public void setTx_senha(String tx_senha) {
+	this.tx_senha = tx_senha;
 }
 
 
