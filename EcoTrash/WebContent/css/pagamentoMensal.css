@@ -1,0 +1,16 @@
+body {
+  background-image: url(../img/back3.jpg);
+}
+h1{
+  position: relative;
+    top: 50px;
+    float: center;
+  color: white;
+  text-align: center;
+}
+.container{
+  background-color: white;
+  position: absolute;
+  left: 120px;
+  top: 160px;
+}
