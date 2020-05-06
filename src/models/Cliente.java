@@ -8,7 +8,6 @@ public class Cliente extends Usuario {
 	private int idServico;
 	public Cliente() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Cliente(int idCliente, int idUsuarioCliente, int idServico) {
 		this.idCliente = idCliente;
@@ -16,14 +15,13 @@ public class Cliente extends Usuario {
 		this.idServico = idServico;
 	}
 	public Cliente(int idUsuario, String cnpj, String cpf, String nome, String email, String senha, String telefone,
-			Date nacimento, String endere�o, String endNumero, String bairro, String cidade, String uf, String cep) {
-		super(idUsuario, cnpj, cpf, nome, email, senha, telefone, nacimento, endere�o, endNumero, bairro, cidade, uf, cep);
-		// TODO Auto-generated constructor stub
+			Date nacimento, String endereco, String endNumero, String bairro, String cidade, String uf, String cep) {
+		super(idUsuario, cnpj, cpf, nome, email, senha, telefone, nacimento, endereco, endNumero, bairro, cidade, uf, cep);
 	}
 	public Cliente(int idUsuario, String cnpj, String cpf, String nome, String email, String senha, String telefone,
-			Date nacimento, String endere�o, String endNumero, String bairro, String cidade, String uf, String cep,
+			Date nacimento, String endereco, String endNumero, String bairro, String cidade, String uf, String cep,
 			int idCliente, int idUsuarioCliente, int idServico) {
-		super(idUsuario, cnpj, cpf, nome, email, senha, telefone, nacimento, endere�o, endNumero, bairro, cidade, uf,
+		super(idUsuario, cnpj, cpf, nome, email, senha, telefone, nacimento, endereco, endNumero, bairro, cidade, uf,
 				cep);
 		this.idCliente = idCliente;
 		this.idUsuarioCliente = idUsuarioCliente;

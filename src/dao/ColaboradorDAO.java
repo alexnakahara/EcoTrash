@@ -21,7 +21,7 @@ public class ColaboradorDAO {
 			stm.setString(6, colaborador.getSenha());
 			stm.setString(7, colaborador.getTelefone());
 			stm.setDate(8, colaborador.getNacimento());
-			stm.setString(9, colaborador.getEndereço());
+			stm.setString(9, colaborador.getEndereco());
 			stm.setString(10, colaborador.getEndNumero());
 			stm.setString(11, colaborador.getBairro());
 			stm.setString(12, colaborador.getCidade());

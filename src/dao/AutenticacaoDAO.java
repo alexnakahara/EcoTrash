@@ -13,7 +13,7 @@ public class AutenticacaoDAO {
 	private Connection conexao;
 
 	public AutenticacaoDAO() {
-		this.conexao = ConnectionFactory.conectar();
+		this.conexao = ConnectionFactory.obtemConexao();
 	}
 
 	public Usuario getUsuario(String tx_email, String tx_senha) {
@@ -28,7 +28,7 @@ public class AutenticacaoDAO {
 
 			Usuario u = new Usuario();
 			if (resultado.next()) {
-				u.setTx_nome(resultado.getString("tx_nome"));
+				u.setNome(resultado.getString("tx_nome"));
 			}
 
 			return u;

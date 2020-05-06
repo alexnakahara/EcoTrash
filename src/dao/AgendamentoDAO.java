@@ -14,7 +14,7 @@ public class AgendamentoDAO {
 	private Connection conexao;
 
 	public AgendamentoDAO() {
-		this.conexao = ConnectionFactory.conectar();
+		this.conexao = ConnectionFactory.obtemConexao();
 	}
 
 	public void cadastrar(Agendamento agendamento) {
@@ -94,36 +94,4 @@ public class AgendamentoDAO {
 			return null;
 		}
 	}
-	/*
-	 * public int alterar(Professor professor) {
-	 * 
-	 * String inserir = "UPDATE professor " + "SET cpf = ?, nome = ?, endereco = ? "
-	 * + " WHERE matricula = ? ";
-	 * 
-	 * try ( PreparedStatement pst = conexao.prepareStatement(inserir) ) {
-	 * 
-	 * pst.setString(1, professor.getCpf()); pst.setString(2, professor.getNome());
-	 * pst.setString(3, professor.getEndereco()); pst.setInt(4,
-	 * professor.getMatricula());
-	 * 
-	 * pst.execute(); return 1;
-	 * 
-	 * } catch (SQLException ex) {
-	 * 
-	 * System.err.println("Não foi possível manipular " + "a tabela Professor.");
-	 * ex.printStackTrace(); return 0; } } /* public int excluir(Professor
-	 * professor) {
-	 * 
-	 * String inserir = "DELETE FROM professor " + " WHERE matricula = ? ";
-	 * 
-	 * try ( PreparedStatement pst = conexao.prepareStatement(inserir) ) {
-	 * 
-	 * pst.setInt(1, professor.getMatricula());
-	 * 
-	 * pst.execute(); return 1; } catch (SQLException ex) {
-	 * 
-	 * System.err.println("Não foi possível manipular " + "a tabela Professor.");
-	 * ex.printStackTrace(); return 0; } }
-	 */
-
 }

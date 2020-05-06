@@ -21,7 +21,7 @@ public class UsuarioDao {
 			stm.setString(6, colaborador.getSenha());
 			stm.setString(7, colaborador.getTelefone());
 			stm.setDate(8, colaborador.getNacimento());
-			stm.setString(9, colaborador.getEndereço());
+			stm.setString(9, colaborador.getEndereco());
 			stm.setString(10, colaborador.getEndNumero());
 			stm.setString(11, colaborador.getBairro());
 			stm.setString(12, colaborador.getCidade());
@@ -53,7 +53,7 @@ public class UsuarioDao {
 			stm.setString(5, cliente.getSenha());
 			stm.setString(6, cliente.getTelefone());
 			stm.setDate(7, cliente.getNacimento());
-			stm.setString(8, cliente.getEndereço());
+			stm.setString(8, cliente.getEndereco());
 			stm.setString(9, cliente.getEndNumero());
 			stm.setString(10, cliente.getBairro());
 			stm.setString(11, cliente.getCidade());
