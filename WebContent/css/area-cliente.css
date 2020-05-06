@@ -22,42 +22,43 @@
 }
 
 .item-agendamento {
+	cursor: pointer;
+	width: 23%;
 	display: grid;
-    width: 451px;
-    margin-top: 60px;
-    padding: 10px;
-    border: 2px solid;
-    border-radius: 10px;
-    grid-template-columns: auto 364px;
-    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
+	margin-top: 60px;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
 }
-.col1{ /*  coluna do icone calendario */
+
+.col1 { /*  coluna do icone calendario */
 	display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
+	justify-content: center;
+	align-items: center;
+	font-size: 50px;
 }
+
 .row1 {
-	display: grid;
-	grid-template-columns: auto 90px;
 	padding: 10px;
 	border-bottom: 3px solid;
-}
-
-.row1__title {
-	font-weight: bold;
-}
-
-.row1__func {
-	display: flex;
-	justify-content: space-around;
-}
-
-.row1__func__edit, .row1__func__del {
-	cursor: pointer;
 }
 
 .row2__text {
 	text-align: justify;
 	padding: 15px;
+}
+
+@media ( max-width : 770px) {
+	.item-agendamento {
+		padding: 12px;
+		font-size:12px;
+		text-align: center;
+	}
+	.row1 {
+		padding: 0;
+		border-bottom: none;
+	}
+	.row2 {
+		display: none;
+	}
 }
