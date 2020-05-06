@@ -29,6 +29,7 @@
     border: 2px solid;
     border-radius: 10px;
     grid-template-columns: auto 364px;
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
 }
 .col1{ /*  coluna do icone calendario */
 	display: flex;

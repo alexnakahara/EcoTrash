@@ -15,14 +15,14 @@ public class Cliente extends Usuario {
 		this.idServico = idServico;
 	}
 	public Cliente(int idUsuario, String cnpj, String cpf, String nome, String email, String senha, String telefone,
-			Date nacimento, String endereco, String endNumero, String bairro, String cidade, String uf, String cep) {
-		super(idUsuario, cnpj, cpf, nome, email, senha, telefone, nacimento, endereco, endNumero, bairro, cidade, uf, cep);
+			Date nacimento, String endereco, String endNumero, String bairro, String cidade, String uf, String cep, int tipoPerfil) {
+		super(idUsuario, cnpj, cpf, nome, email, senha, telefone, nacimento, endereco, endNumero, bairro, cidade, uf, cep, tipoPerfil);
 	}
 	public Cliente(int idUsuario, String cnpj, String cpf, String nome, String email, String senha, String telefone,
 			Date nacimento, String endereco, String endNumero, String bairro, String cidade, String uf, String cep,
-			int idCliente, int idUsuarioCliente, int idServico) {
+			int idCliente, int idUsuarioCliente, int idServico, int tipoPerfil) {
 		super(idUsuario, cnpj, cpf, nome, email, senha, telefone, nacimento, endereco, endNumero, bairro, cidade, uf,
-				cep);
+				cep, tipoPerfil );
 		this.idCliente = idCliente;
 		this.idUsuarioCliente = idUsuarioCliente;
 		this.idServico = idServico;
