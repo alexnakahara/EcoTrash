@@ -1,42 +1,135 @@
 package models;
 
-//convenção para campos para ter padrão de nomenclatura com o banco 
-//texto: tx_
-//numero: nu_
+import java.sql.Date;
+
 public class Usuario {
-private String tx_nome;
-private String tx_email;
-private String tx_dtnascimento;
+	//Variables declaration
+	private int idUsuario;
+	private String cnpj;
+	private String cpf;
+	private String nome;
+	private String email;
+	private String senha;
+	private String telefone;
+	private Date nacimento;
+	private String endereço;
+	private String endNumero;
+	private String bairro;
+	private String cidade;
+	private String uf;
+	private String cep;
+	
+	// Constructors
+	public Usuario(int idUsuario, String cnpj, String cpf, String nome, String email, String senha, String telefone,
+			Date nacimento, String endereço, String endNumero, String bairro, String cidade, String uf, String cep) {
+		super();
+		this.idUsuario = idUsuario;
+		this.cnpj = cnpj;
+		this.cpf = cpf;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.telefone = telefone;
+		this.nacimento = nacimento;
+		this.endereço = endereço;
+		this.endNumero = endNumero;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.uf = uf;
+		this.cep = cep;
+	}
+	public Usuario(){
+		
+	}
+	
+	//Geter's and Seter's
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+	public String getCnpj() {
+		return cnpj;
+	}
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	public Date getNacimento() {
+		return nacimento;
+	}
+	public void setNacimento(Date nacimento) {
+		this.nacimento = nacimento;
+	}
+	public String getEndereço() {
+		return endereço;
+	}
+	public void setEndereço(String endereço) {
+		this.endereço = endereço;
+	}
+	public String getEndNumero() {
+		return endNumero;
+	}
+	public void setEndNumero(String endNumero) {
+		this.endNumero = endNumero;
+	}
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+	public String getUf() {
+		return uf;
+	}
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	
+	
 
-public Usuario(String tx_nome, String tx_email, String tx_dtnascimento) {
-	this.tx_nome = tx_nome;
-	this.tx_email = tx_email;
-	this.tx_dtnascimento = tx_dtnascimento;
-}
-
-public String getTx_nome() {
-	return tx_nome;
-}
-
-public void setTx_nome(String tx_nome) {
-	this.tx_nome = tx_nome;
-}
-
-public String getTx_email() {
-	return tx_email;
-}
-
-public void setTx_email(String tx_email) {
-	this.tx_email = tx_email;
-}
-
-public String getTx_dtnascimento() {
-	return tx_dtnascimento;
-}
-
-public void setTx_dtnascimento(String tx_dtnascimento) {
-	this.tx_dtnascimento = tx_dtnascimento;
-}
-
-
+	
+	
 }
