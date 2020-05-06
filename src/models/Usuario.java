@@ -3,7 +3,6 @@ package models;
 import java.sql.Date;
 
 public class Usuario {
-	//Variables declaration
 	private int idUsuario;
 	private String cnpj;
 	private String cpf;
@@ -18,10 +17,11 @@ public class Usuario {
 	private String cidade;
 	private String uf;
 	private String cep;
+	private int tipoPerfil;
 	
 	// Constructors
 	public Usuario(int idUsuario, String cnpj, String cpf, String nome, String email, String senha, String telefone,
-			Date nacimento, String endereco, String endNumero, String bairro, String cidade, String uf, String cep) {
+			Date nacimento, String endereco, String endNumero, String bairro, String cidade, String uf, String cep, int tipoPerfil) {
 		super();
 		this.idUsuario = idUsuario;
 		this.cnpj = cnpj;
@@ -37,12 +37,12 @@ public class Usuario {
 		this.cidade = cidade;
 		this.uf = uf;
 		this.cep = cep;
+		this.tipoPerfil = tipoPerfil;
 	}
 	public Usuario(){
 		
 	}
 	
-	//Geter's and Seter's
 	public int getIdUsuario() {
 		return idUsuario;
 	}
@@ -126,6 +126,12 @@ public class Usuario {
 	}
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	public int getTipoPerfil() {
+		return tipoPerfil;
+	}
+	public void setTipoPerfil(int tipoPerfil) {
+		this.tipoPerfil = tipoPerfil;
 	}
 	
 	

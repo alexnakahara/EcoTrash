@@ -1,0 +1,62 @@
+.-form {
+	width: 500px;
+}
+
+.form-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn-login {
+	width: 208px;
+	border: 1px solid;
+}
+
+.header {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	height: 50px;
+	align-items: center;
+	margin: 23px 74px;
+}
+
+.item-agendamento {
+	display: grid;
+    width: 451px;
+    margin-top: 60px;
+    padding: 10px;
+    border: 2px solid;
+    border-radius: 10px;
+    grid-template-columns: auto 364px;
+}
+.col1{ /*  coluna do icone calendario */
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+}
+.row1 {
+	display: grid;
+	grid-template-columns: auto 90px;
+	padding: 10px;
+	border-bottom: 3px solid;
+}
+
+.row1__title {
+	font-weight: bold;
+}
+
+.row1__func {
+	display: flex;
+	justify-content: space-around;
+}
+
+.row1__func__edit, .row1__func__del {
+	cursor: pointer;
+}
+
+.row2__text {
+	text-align: justify;
+	padding: 15px;
+}

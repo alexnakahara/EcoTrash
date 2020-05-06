@@ -19,7 +19,7 @@ public class ConnectionFactory {
 	public static Connection obtemConexao() {
 		try {
 			return DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/ecotrash?useTimezone=true&serverTimezone=America/Sao_Paulo&user=root&password=");
+					.getConnection("jdbc:mysql://localhost:3306/ecotrash?useTimezone=true&serverTimezone=America/Sao_Paulo&user=Alexander&password=alex1006");
 		} catch (SQLException ex) {
 			System.err.println("Não foi possível conectar!");
 			ex.printStackTrace();

@@ -40,7 +40,7 @@ public class AgendamentoDAO {
 
 	public Agendamento getAgendamento(int id_agendamento) {
 
-		String inserir = "SELECT * FROM agendamento " + " WHERE id_agendamento = ? ";
+		String inserir = "SELECT * FROM agendamento WHERE id_agendamento = ? ";
 
 		try (PreparedStatement pst = conexao.prepareStatement(inserir)) {
 
@@ -66,12 +66,12 @@ public class AgendamentoDAO {
 		}
 	}
 
-	public ArrayList<Agendamento> listAgendamentos() {
+	public ArrayList<Agendamento> listAgendamentosByCliente(int id_cliente) {
 
-		String inserir = "SELECT * FROM agendamento";
+		String inserir = "SELECT * FROM agendamento WHERE id_cliente =?";
 
 		try (PreparedStatement pst = conexao.prepareStatement(inserir)) {
-
+			pst.setInt(1, id_cliente);
 			ResultSet resultado = pst.executeQuery();
 
 			ArrayList<Agendamento> lista = new ArrayList<>();

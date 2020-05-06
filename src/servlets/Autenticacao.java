@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dao.AutenticacaoDAO;
+import models.Usuario;
 
 
 @WebServlet("/Autenticacao.do")
@@ -31,8 +32,17 @@ public class Autenticacao extends HttpServlet {
 		AutenticacaoDAO dao = new AutenticacaoDAO();
 
 		if (dao.autenticarUsuario(tx_email, tx_senha)) {
-			request.setAttribute("usuario", dao.getUsuario(tx_email, tx_senha)); // mandando o obj para a servlet
-			RequestDispatcher rd = request.getRequestDispatcher("AreaUsuario");
+			Usuario usuario = dao.getUsuario(tx_email, tx_senha);
+			RequestDispatcher rd = request.getRequestDispatcher("index.html");// garantia
+			switch (usuario.getTipoPerfil()) {
+			case 0: //cliente
+				rd = request.getRequestDispatcher("jsp/area-cliente.jsp");
+				break;
+			case 1: // colaborador
+				rd = request.getRequestDispatcher("jsp/area-colaborador.jsp");
+				break;
+			}
+			request.setAttribute("usuario", usuario ); // mandando o obj para a servlet
 			rd.forward(request, response);
 		} else {
 			out.print("<center>Desculpe email ou senha inválida!</center>");
