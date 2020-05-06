@@ -1,3 +1,7 @@
+body {
+	font-family: Arial !important;
+}
+
 .-form {
 	width: 500px;
 }
@@ -14,11 +18,19 @@
 }
 
 .header {
+	background-color: rgb(51, 255, 51);
 	display: grid;
 	grid-template-columns: 2fr 1fr;
-	height: 50px;
+	height: 81px;
 	align-items: center;
-	margin: 23px 74px;
+	padding: 24px;
+	margin-bottom: 40px;
+	font-size: 15px;
+}
+
+.header__logo {
+	font-weight: bold;
+	font-size: 22px;
 }
 
 .item-agendamento {
@@ -48,10 +60,18 @@
 	padding: 15px;
 }
 
+.empty-coleta {
+	height: 200px;
+	display: flex;
+	align-items: center;
+	margin-top: 16px;
+	font-weight: bold;
+}
+
 @media ( max-width : 770px) {
 	.item-agendamento {
 		padding: 12px;
-		font-size:12px;
+		font-size: 12px;
 		text-align: center;
 	}
 	.row1 {

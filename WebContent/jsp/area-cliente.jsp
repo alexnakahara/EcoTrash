@@ -16,7 +16,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="css/area-cliente.css">
+<link rel="stylesheet" href="css/area-usuario.css">
 
 <!-- Para funcionar o component de datepicker -->
 <link rel="stylesheet" type="text/css"
@@ -35,7 +35,7 @@
 </head>
 <body>
 	<header class="header">
-		<h2>EcoTrash</h2>
+		<div class="header__logo">EcoTrash</div>
 		<%
 			Usuario u = (Usuario) request.getAttribute("usuario");
 			AgendamentoDAO agendaDao = new AgendamentoDAO();
@@ -47,7 +47,7 @@
 				Olá,
 				<%=u.getNome()%>
 			</div>
-			<div class="header__sair">Sair</div>
+			<a href="/EcoTrash" class="header__sair">Sair</a>
 		</div>
 	</header>
 	<div class="container">
@@ -82,7 +82,7 @@
 					<div class="row2">
 						<div class="row2__text">
 							<%=item.getDescricao()%>
-							<%= dateFormat.format(item.getDtAgendada()) %>
+							<%=dateFormat.format(item.getDtAgendada())%>
 						</div>
 					</div>
 				</div>
@@ -106,7 +106,8 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form id="myForm" class="panel-body" method="post" action="Agendamento.do">
+						<form id="myForm" class="panel-body" method="post"
+							action="Agendamento.do">
 							<div class="form-group">
 								<label class="control-label">Dia e horário de coleta</label> <input
 									hidden type="number" class="form-control" name="id_cliente"
@@ -136,7 +137,8 @@
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" onclick="onSubmitAgendar()">Agendar</button>
+						<button type="button" class="btn btn-primary"
+							onclick="onSubmitAgendar()">Agendar</button>
 					</div>
 				</div>
 			</div>
