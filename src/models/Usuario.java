@@ -12,7 +12,7 @@ public class Usuario {
 	private String senha;
 	private String telefone;
 	private Date nacimento;
-	private String endereço;
+	private String endereï¿½o;
 	private String endNumero;
 	private String bairro;
 	private String cidade;
@@ -21,7 +21,7 @@ public class Usuario {
 	
 	// Constructors
 	public Usuario(int idUsuario, String cnpj, String cpf, String nome, String email, String senha, String telefone,
-			Date nacimento, String endereço, String endNumero, String bairro, String cidade, String uf, String cep) {
+			Date nacimento, String endereï¿½o, String endNumero, String bairro, String cidade, String uf, String cep) {
 		super();
 		this.idUsuario = idUsuario;
 		this.cnpj = cnpj;
@@ -31,7 +31,7 @@ public class Usuario {
 		this.senha = senha;
 		this.telefone = telefone;
 		this.nacimento = nacimento;
-		this.endereço = endereço;
+		this.endereï¿½o = endereï¿½o;
 		this.endNumero = endNumero;
 		this.bairro = bairro;
 		this.cidade = cidade;
@@ -91,11 +91,11 @@ public class Usuario {
 	public void setNacimento(Date nacimento) {
 		this.nacimento = nacimento;
 	}
-	public String getEndereço() {
-		return endereço;
+	public String getEndereï¿½o() {
+		return endereï¿½o;
 	}
-	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+	public void setEndereï¿½o(String endereï¿½o) {
+		this.endereï¿½o = endereï¿½o;
 	}
 	public String getEndNumero() {
 		return endNumero;
