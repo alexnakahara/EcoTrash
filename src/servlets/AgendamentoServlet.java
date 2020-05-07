@@ -47,7 +47,7 @@ public class AgendamentoServlet extends HttpServlet {
 		PrintWriter saida = response.getWriter();
 		String data = request.getParameter("dt_agendamento");
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm a");// recebe nesse formato, tem que estar assim
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");// recebe nesse formato, tem que estar assim
 
 		try {
 			

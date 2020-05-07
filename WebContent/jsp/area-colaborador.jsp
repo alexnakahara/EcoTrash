@@ -26,7 +26,7 @@
 		<%
 			Usuario u = (Usuario) request.getAttribute("usuario");
 			AgendamentoDAO agendaDao = new AgendamentoDAO();
-			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 			ArrayList<Agendamento> listAgenda = agendaDao.listAgendamentosDisponiveis();
 		%>
 		<div class="d-flex justify-content-between">
