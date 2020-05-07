@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class ConnectionFactory {
 
@@ -18,10 +19,14 @@ public class ConnectionFactory {
 	
 	public static Connection obtemConexao() {
 		try {
+			Properties properties = new Properties();
+			properties.setProperty("user", "Alexander");
+			properties.setProperty("password", "alex1006");
+			properties.setProperty("useSSL", "false");
 			return DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/ecotrash?useTimezone=true&serverTimezone=America/Sao_Paulo&user=root&password=");
+					.getConnection("jdbc:mysql://localhost:3306/ecotrash?useTimezone=true&serverTimezone=UTC", properties);
 		} catch (SQLException ex) {
-			System.err.println("Não foi possível conectar!");
+			System.err.println("N�o foi possível conectar!");
 			ex.printStackTrace();
 			return null;
 		}

@@ -17,30 +17,31 @@ public class AgendamentoDAO {
 		this.conexao = ConnectionFactory.obtemConexao();
 	}
 
-	public void cadastrar(Agendamento agendamento) {
+	public boolean cadastrar(Agendamento agendamento) {
 
-		String inserir = "INSERT INTO agendamento(id_cliente, dt_agendada, tx_titulo, tx_descricao)"
-						+ "	VALUES(?, ?, ?, ?)";
+		String inserir = "INSERT INTO agendamento(id_cliente, dt_agendada, tx_titulo, tx_descricao)	VALUES(?, ?, ?, ?)";
 
 		try (PreparedStatement pst = conexao.prepareStatement(inserir)) {
 
-			pst.setInt(1, agendamento.getId_cliente());
-			pst.setDate(2,agendamento.getDt_agendada());
-			pst.setString(3, agendamento.getTx_titulo());
-			pst.setString(4, agendamento.getTx_descricao());
+			pst.setInt(1, agendamento.getIdCliente());
+			pst.setTimestamp(2, new java.sql.Timestamp(agendamento.getDtAgendada().getTime()));
+			pst.setString(3, agendamento.getTitulo());
+			pst.setString(4, agendamento.getDescricao());
 			pst.execute();
-
+			return true;
+			
 		} catch (SQLException ex) {
 
 			System.err.println("N�o foi poss�vel cadastrar o agendamento");
 			ex.printStackTrace();
+			return false;
 
 		}
 	}
 
 	public Agendamento getAgendamento(int id_agendamento) {
 
-		String inserir = "SELECT * FROM agendamento " + " WHERE id_agendamento = ? ";
+		String inserir = "SELECT * FROM agendamento WHERE id_agendamento = ? ";
 
 		try (PreparedStatement pst = conexao.prepareStatement(inserir)) {
 
@@ -49,11 +50,12 @@ public class AgendamentoDAO {
 
 			Agendamento a = new Agendamento();
 			if (resultado.next()) {
-				a.setDt_agendada(resultado.getDate("dt_agendada"));
-				a.setTx_titulo(resultado.getString("tx_titulo"));
-				a.set_Tx_descricao(resultado.getString("tx_descricao"));
-				a.setId_agendamento(id_agendamento);
-				a.setId_cliente(resultado.getInt("id_cliente"));
+				a.setIdAgendamento(resultado.getInt("id_agendamento"));
+				a.setTitulo(resultado.getString("tx_titulo"));
+				a.setDescricao(resultado.getString("tx_descricao"));
+				a.setDtAgendada(resultado.getTimestamp("dt_agendada"));
+				a.setIdColaborador(resultado.getInt("id_colaborador"));
+				a.setIdCliente(resultado.getInt("id_cliente"));
 			}
 			return a;
 
@@ -66,22 +68,82 @@ public class AgendamentoDAO {
 		}
 	}
 
-	public ArrayList<Agendamento> listAgendamentos() {
+	public ArrayList<Agendamento> listAgendamentosByCliente(int id_cliente) {
 
-		String inserir = "SELECT * FROM agendamento";
+		String inserir = "SELECT * FROM agendamento WHERE id_cliente =?";
 
 		try (PreparedStatement pst = conexao.prepareStatement(inserir)) {
-
+			pst.setInt(1, id_cliente);
 			ResultSet resultado = pst.executeQuery();
 
 			ArrayList<Agendamento> lista = new ArrayList<>();
 			while (resultado.next()) {
 				Agendamento a = new Agendamento();
-				a.setDt_agendada(resultado.getDate("dt_agendada"));
-				a.setTx_titulo(resultado.getString("tx_titulo"));
-				a.set_Tx_descricao(resultado.getString("tx_descricao"));
-				a.setId_agendamento(resultado.getInt("id_agendamento"));
-				a.setId_cliente(resultado.getInt("id_cliente"));
+				a.setIdAgendamento(resultado.getInt("id_agendamento"));
+				a.setTitulo(resultado.getString("tx_titulo"));
+				a.setDescricao(resultado.getString("tx_descricao"));
+				a.setDtAgendada(resultado.getTimestamp("dt_agendada"));
+				a.setIdColaborador(resultado.getInt("id_colaborador"));
+				a.setIdCliente(resultado.getInt("id_cliente"));
+				lista.add(a);
+			}
+			return lista;
+
+		} catch (SQLException ex) {
+
+			System.err.println("Não foi possível manipular " + "a tabela Agendamento.");
+			ex.printStackTrace();
+
+			return null;
+		}
+	}
+	
+	public ArrayList<Agendamento> listAgendamentosByColaborador(int id_colaborador) {
+
+		String inserir = "SELECT * FROM agendamento WHERE id_colaborador =?";
+
+		try (PreparedStatement pst = conexao.prepareStatement(inserir)) {
+			pst.setInt(1, id_colaborador);
+			ResultSet resultado = pst.executeQuery();
+
+			ArrayList<Agendamento> lista = new ArrayList<>();
+			while (resultado.next()) {
+				Agendamento a = new Agendamento();
+				a.setIdAgendamento(resultado.getInt("id_agendamento"));
+				a.setTitulo(resultado.getString("tx_titulo"));
+				a.setDescricao(resultado.getString("tx_descricao"));
+				a.setDtAgendada(resultado.getTimestamp("dt_agendada"));
+				a.setIdColaborador(resultado.getInt("id_colaborador"));
+				a.setIdCliente(resultado.getInt("id_cliente"));
+				lista.add(a);
+			}
+			return lista;
+
+		} catch (SQLException ex) {
+
+			System.err.println("Não foi possível manipular " + "a tabela Agendamento.");
+			ex.printStackTrace();
+
+			return null;
+		}
+	}
+	
+	public ArrayList<Agendamento> listAgendamentosDisponiveis() {
+
+		String inserir = "SELECT * FROM agendamento WHERE id_colaborador IS NULL  AND dt_agendada >= UTC_TIMESTAMP()";
+
+		try (PreparedStatement pst = conexao.prepareStatement(inserir)) {
+			ResultSet resultado = pst.executeQuery();
+
+			ArrayList<Agendamento> lista = new ArrayList<>();
+			while (resultado.next()) {
+				Agendamento a = new Agendamento();
+				a.setIdAgendamento(resultado.getInt("id_agendamento"));
+				a.setTitulo(resultado.getString("tx_titulo"));
+				a.setDescricao(resultado.getString("tx_descricao"));
+				a.setDtAgendada(resultado.getTimestamp("dt_agendada"));
+				a.setIdColaborador(resultado.getInt("id_colaborador"));
+				a.setIdCliente(resultado.getInt("id_cliente"));
 				lista.add(a);
 			}
 			return lista;

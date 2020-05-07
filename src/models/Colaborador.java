@@ -9,9 +9,9 @@ public class Colaborador extends Usuario {
 	
 	public Colaborador(int idUsuario, String cnpj, String cpf, String nome, String email, String senha, String telefone,
 			Date nacimento, String endereço, String endNumero, String bairro, String cidade, String uf, String cep,
-			int idColaborador, int idUsuarioColaborador, Date dateCadastro) {
+			int idColaborador, int idUsuarioColaborador, Date dateCadastro, int tipoPerfil) {
 		super(idUsuario, cnpj, cpf, nome, email, senha, telefone, nacimento, endereço, endNumero, bairro, cidade, uf,
-				cep);
+				cep, tipoPerfil);
 		this.idColaborador = idColaborador;
 		idUsuario = idUsuarioColaborador;
 		this.dateCadastro = dateCadastro;
@@ -21,8 +21,8 @@ public class Colaborador extends Usuario {
 		// TODO Auto-generated constructor stub
 	}
 	public Colaborador(int idUsuario, String cnpj, String cpf, String nome, String email, String senha, String telefone,
-			Date nacimento, String endereço, String endNumero, String bairro, String cidade, String uf, String cep) {
-		super(idUsuario, cnpj, cpf, nome, email, senha, telefone, nacimento, endereço, endNumero, bairro, cidade, uf, cep);
+			Date nacimento, String endereço, String endNumero, String bairro, String cidade, String uf, String cep, int tipoPerfil) {
+		super(idUsuario, cnpj, cpf, nome, email, senha, telefone, nacimento, endereço, endNumero, bairro, cidade, uf, cep, tipoPerfil);
 		// TODO Auto-generated constructor stub
 	}
 	public int getIdColaborador() {

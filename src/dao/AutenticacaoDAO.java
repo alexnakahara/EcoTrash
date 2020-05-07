@@ -28,7 +28,10 @@ public class AutenticacaoDAO {
 
 			Usuario u = new Usuario();
 			if (resultado.next()) {
+				u.setIdUsuario(resultado.getInt("id_usuario"));
 				u.setNome(resultado.getString("tx_nome"));
+				u.setEmail(resultado.getString("tx_email"));
+				u.setTipoPerfil(resultado.getInt("tipo_perfil"));
 			}
 
 			return u;

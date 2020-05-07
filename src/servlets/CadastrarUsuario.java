@@ -30,11 +30,12 @@ public class CadastrarUsuario extends HttpServlet {
 		String cidade = request.getParameter("cidade");
 		String uf = request.getParameter("uf");
 		String cep = request.getParameter("cep");
+		int tipoPerfil = Integer.parseInt(request.getParameter("tipoPerfil"));
 		int idCliente = 123;
 		int idClienteUsuario = 12345;
 		int idS = 3;
 		
-		Cliente u = new Cliente(idUsuario, cnpj, cpf, nome, mail, senha, fone, null , endereco, numero, bairro, cidade, uf, cep, idCliente, idClienteUsuario, idS);
+		Cliente u = new Cliente(idUsuario, cnpj, cpf, nome, mail, senha, fone, null , endereco, numero, bairro, cidade, uf, cep, idCliente, idClienteUsuario, idS, tipoPerfil);
 		UsuarioDao.cadastrarUsuarioCliente(u);
 
 	}

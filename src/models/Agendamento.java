@@ -1,74 +1,74 @@
 package models;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Agendamento {
-	private int id_agendamento;
-	private int id_cliente;
-	private int id_colaborador;
-	private Date dt_agendada;
-	private String tx_titulo;
-	private String tx_descricao;
+	private int idAgendamento;
+	private int idCliente;
+	private int idColaborador;
+	private Timestamp dtAgendada;
+	private String titulo;
+	private String descricao;
 	
-	public Agendamento(int id_cliente, int id_colaborador, Date dt_agendada, String tx_descricao, String tx_titulo) {
-		this.id_cliente = id_cliente;
-		this.id_colaborador = id_colaborador;
-		this.dt_agendada = dt_agendada;
-		this.tx_titulo = tx_titulo;
-		this.tx_descricao = tx_descricao;
+	public Agendamento() {}
+	//Não coloca o colobarador quando cria
+	public Agendamento(int idCliente, Timestamp dtAgendada, String descricao, String tx_titulo) {
+		this.idCliente = idCliente;
+		this.dtAgendada = dtAgendada;
+		this.descricao = descricao;
+		this.titulo = tx_titulo;
+	}
+	
+	public int getIdAgendamento() {
+		return idAgendamento;
 	}
 
-	public Agendamento() {
-		// TODO Auto-generated constructor stub
+	public void setIdAgendamento(int idAgendamento) {
+		this.idAgendamento = idAgendamento;
 	}
 
-	public int getId_cliente() {
-		return id_cliente;
+	public int getIdCliente() {
+		return idCliente;
 	}
 
-	public void setId_cliente(int id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
 	}
 
-	public int getId_colaborador() {
-		return id_colaborador;
+	public int getIdColaborador() {
+		return idColaborador;
 	}
 
-	public void setId_colaborador(int id_colaborador) {
-		this.id_colaborador = id_colaborador;
+	public void setIdColaborador(int idColaborador) {
+		this.idColaborador = idColaborador;
 	}
 
-	public Date getDt_agendada() {
-		return dt_agendada;
+	public Timestamp getDtAgendada() {
+		return dtAgendada;
 	}
 
-	public void setDt_agendada(Date dt_agendada) {
-		this.dt_agendada = dt_agendada;
+	public void setDtAgendada(Timestamp dtAgendada) {
+		this.dtAgendada = dtAgendada;
 	}
 
-	public String getTx_descricao() {
-		return tx_descricao;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void set_Tx_descricao(String tx_descricao) {
-		this.tx_descricao = tx_descricao;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public int getId_agendamento() {
-		return id_agendamento;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setId_agendamento(int id_agendamento) {
-		this.id_agendamento = id_agendamento;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public String getTx_titulo() {
-		return tx_titulo;
-	}
-
-	public void setTx_titulo(String tx_titulo) {
-		this.tx_titulo = tx_titulo;
-	}
+	
+	
 
 
 }
