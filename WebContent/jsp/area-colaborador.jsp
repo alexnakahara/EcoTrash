@@ -17,6 +17,8 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="css/area-usuario.css">
+<link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 	<header class="header">
@@ -24,7 +26,7 @@
 		<%
 			Usuario u = (Usuario) request.getAttribute("usuario");
 			AgendamentoDAO agendaDao = new AgendamentoDAO();
-			SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyy hh:mm a");
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 			ArrayList<Agendamento> listAgenda = agendaDao.listAgendamentosDisponiveis();
 		%>
 		<div class="d-flex justify-content-between">
@@ -36,11 +38,11 @@
 		</div>
 	</header>
 	<div class="container">
-		<div>Você é Colaborador!</div>
-		<div class="d-flex justify-content-around">
+		<div class="who-am-i">Você é um Colaborador!</div>
+		<div class="d-flex justify-content-around flex-wrap">
 			<%
 				if (listAgenda.isEmpty()) {
-					out.print("<div class='empty-coleta'> Nenhuma coleta disponivel no momento!</div>");
+					out.print("<div class='empty-content'> Nenhuma coleta disponível no momento!</div>");
 				}
 
 				for (Agendamento item : listAgenda) {
@@ -55,9 +57,11 @@
 						<div class="font-weight-bold"><%=item.getTitulo()%></div>
 					</div>
 					<div class="row2">
-						<div class="row2__text">
-							<%=item.getDescricao()%>
-							<%=dateFormat.format(item.getDtAgendada())%>
+						<div class="row2__text d-flex">
+							<div class="font-weight-bold mr-2">Data:</div> <%=dateFormat.format(item.getDtAgendada())%>
+						</div>
+						<div class="row2__text d-flex">
+							<div class="font-weight-bold mr-2">Descrição:</div> <%=item.getDescricao()%>
 						</div>
 					</div>
 				</div>

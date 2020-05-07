@@ -1,21 +1,20 @@
 package models;
 
-import java.sql.Date;
-import java.text.DateFormat;
+import java.sql.Timestamp;
 
 public class Agendamento {
 	private int idAgendamento;
 	private int idCliente;
 	private int idColaborador;
-	private java.util.Date dtAgendada;
+	private Timestamp dtAgendada;
 	private String titulo;
 	private String descricao;
 	
 	public Agendamento() {}
 	//Não coloca o colobarador quando cria
-	public Agendamento(int idCliente, java.util.Date parsedDate, String descricao, String tx_titulo) {
+	public Agendamento(int idCliente, Timestamp dtAgendada, String descricao, String tx_titulo) {
 		this.idCliente = idCliente;
-		this.dtAgendada = parsedDate;
+		this.dtAgendada = dtAgendada;
 		this.descricao = descricao;
 		this.titulo = tx_titulo;
 	}
@@ -44,11 +43,11 @@ public class Agendamento {
 		this.idColaborador = idColaborador;
 	}
 
-	public java.util.Date getDtAgendada() {
+	public Timestamp getDtAgendada() {
 		return dtAgendada;
 	}
 
-	public void setDtAgendada(Date dtAgendada) {
+	public void setDtAgendada(Timestamp dtAgendada) {
 		this.dtAgendada = dtAgendada;
 	}
 

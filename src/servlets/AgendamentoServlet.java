@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,23 +38,29 @@ public class AgendamentoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF-8");
 		String titulo = request.getParameter("titulo");
 		String descricao = request.getParameter("descricao");
 		int id = Integer.parseInt(request.getParameter("id_cliente"));
-		response.setContentType("text/html");
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter saida = response.getWriter();
 		String data = request.getParameter("dt_agendamento");
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm a");// recebe nesse formato, tem que estar assim
 
 		try {
 			
 			AgendamentoDAO dao = new AgendamentoDAO();
 			Date parsedDate = dateFormat.parse(data);
-			Agendamento agendamento = new Agendamento(id, parsedDate, descricao, titulo);
+			
+			Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+			
+			System.out.println("DAaatataa" + timestamp );
+			Agendamento agendamento = new Agendamento(id, timestamp, descricao, titulo);
 			
 			if(dao.cadastrar(agendamento)) {
-			saida.print("<div>Agendamento feito com sucesso</div>");
+				saida.print("<div>Agendamento feito com sucesso</div>");
 			} else {
 				saida.print("<div>Houve um erro no agendamento, tente novamente!</div>");
 			}

@@ -24,7 +24,7 @@ public class AgendamentoDAO {
 		try (PreparedStatement pst = conexao.prepareStatement(inserir)) {
 
 			pst.setInt(1, agendamento.getIdCliente());
-			pst.setDate(2, new java.sql.Date(agendamento.getDtAgendada().getTime()));
+			pst.setTimestamp(2, new java.sql.Timestamp(agendamento.getDtAgendada().getTime()));
 			pst.setString(3, agendamento.getTitulo());
 			pst.setString(4, agendamento.getDescricao());
 			pst.execute();
@@ -53,7 +53,7 @@ public class AgendamentoDAO {
 				a.setIdAgendamento(resultado.getInt("id_agendamento"));
 				a.setTitulo(resultado.getString("tx_titulo"));
 				a.setDescricao(resultado.getString("tx_descricao"));
-				a.setDtAgendada(resultado.getDate("dt_agendada"));
+				a.setDtAgendada(resultado.getTimestamp("dt_agendada"));
 				a.setIdColaborador(resultado.getInt("id_colaborador"));
 				a.setIdCliente(resultado.getInt("id_cliente"));
 			}
@@ -82,7 +82,7 @@ public class AgendamentoDAO {
 				a.setIdAgendamento(resultado.getInt("id_agendamento"));
 				a.setTitulo(resultado.getString("tx_titulo"));
 				a.setDescricao(resultado.getString("tx_descricao"));
-				a.setDtAgendada(resultado.getDate("dt_agendada"));
+				a.setDtAgendada(resultado.getTimestamp("dt_agendada"));
 				a.setIdColaborador(resultado.getInt("id_colaborador"));
 				a.setIdCliente(resultado.getInt("id_cliente"));
 				lista.add(a);
@@ -112,7 +112,7 @@ public class AgendamentoDAO {
 				a.setIdAgendamento(resultado.getInt("id_agendamento"));
 				a.setTitulo(resultado.getString("tx_titulo"));
 				a.setDescricao(resultado.getString("tx_descricao"));
-				a.setDtAgendada(resultado.getDate("dt_agendada"));
+				a.setDtAgendada(resultado.getTimestamp("dt_agendada"));
 				a.setIdColaborador(resultado.getInt("id_colaborador"));
 				a.setIdCliente(resultado.getInt("id_cliente"));
 				lista.add(a);
@@ -141,7 +141,7 @@ public class AgendamentoDAO {
 				a.setIdAgendamento(resultado.getInt("id_agendamento"));
 				a.setTitulo(resultado.getString("tx_titulo"));
 				a.setDescricao(resultado.getString("tx_descricao"));
-				a.setDtAgendada(resultado.getDate("dt_agendada"));
+				a.setDtAgendada(resultado.getTimestamp("dt_agendada"));
 				a.setIdColaborador(resultado.getInt("id_colaborador"));
 				a.setIdCliente(resultado.getInt("id_cliente"));
 				lista.add(a);

@@ -1,10 +1,11 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="models.Agendamento"%>
-<%@page import="dao.AgendamentoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="models.Usuario"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="models.Agendamento"%>
+<%@page import="dao.AgendamentoDAO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="css/area-usuario.css">
+<link rel="stylesheet" href="css/style.css">
 
 <!-- Para funcionar o component de datepicker -->
 <link rel="stylesheet" type="text/css"
@@ -39,7 +41,7 @@
 		<%
 			Usuario u = (Usuario) request.getAttribute("usuario");
 			AgendamentoDAO agendaDao = new AgendamentoDAO();
-			SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyy hh:mm a");
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 			ArrayList<Agendamento> listAgenda = agendaDao.listAgendamentosByCliente(u.getIdUsuario());
 		%>
 		<div class="d-flex justify-content-between">
@@ -51,8 +53,8 @@
 		</div>
 	</header>
 	<div class="container">
-		<div>Você é Cliente!</div>
-		<div class="d-flex justify-content-around">
+		<div class="who-am-i">Você é um Cliente!</div>
+		<div class="d-flex justify-content-around flex-wrap">
 
 			<div class="item-agendamento" data-toggle="modal"
 				data-target="#modalForm">
@@ -60,12 +62,12 @@
 					<i class="far fa-calendar-plus"></i>
 				</div>
 				<div class="col2">
-					<div class="font-weight-bold">Agende mais uma coleta!</div>
+					<div class="font-weight-bold text-center">Agende uma coleta!</div>
 				</div>
 			</div>
 			<%
 				if (listAgenda.isEmpty()) {
-					out.print("<div> Você não fez nenhum agendamento no momento!</div>");
+					out.print("<div class='empty-content'> Você não fez nenhum agendamento no momento!</div>");
 				}
 
 				for (Agendamento item : listAgenda) {
@@ -80,9 +82,13 @@
 						<div class="font-weight-bold"><%=item.getTitulo()%></div>
 					</div>
 					<div class="row2">
-						<div class="row2__text">
+						<div class="row2__text d-flex">
+							<div class="font-weight-bold mr-2">Data:</div>
+							<%= dateFormat.format(item.getDtAgendada()) %>
+						</div>
+						<div class="row2__text d-flex">
+							<div class="font-weight-bold mr-2">Descrição:</div>
 							<%=item.getDescricao()%>
-							<%=dateFormat.format(item.getDtAgendada())%>
 						</div>
 					</div>
 				</div>
@@ -99,7 +105,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Modal title</h5>
+						<div class="modal-title">Agendamento</div>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
@@ -119,21 +125,21 @@
 									</span>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="control-label text-center">Título</label> <input
-											type="text" class="form-control" name="titulo" id="titulo">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="control-label">Comentários adicionais</label> <input
-											type="text" class="form-control" name="descricao"
-											id="descricao">
-									</div>
-								</div>
+
+
+							<div class="form-group">
+								<label class="control-label text-center">Título</label> <input
+									type="text" class="form-control" name="titulo" id="titulo">
 							</div>
+
+
+							<div class="form-group">
+								<label class="control-label">Descrição</label> 
+								<textarea type="text" class="form-control" name="descricao" rows="4"
+									id="descricao"></textarea>
+							</div>
+
+
 						</form>
 					</div>
 					<div class="modal-footer">
