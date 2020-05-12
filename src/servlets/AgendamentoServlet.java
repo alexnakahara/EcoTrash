@@ -32,10 +32,6 @@ public class AgendamentoServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -56,7 +52,6 @@ public class AgendamentoServlet extends HttpServlet {
 			
 			Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
 			
-			System.out.println("DAaatataa" + timestamp );
 			Agendamento agendamento = new Agendamento(id, timestamp, descricao, titulo);
 			
 			if(dao.cadastrar(agendamento)) {
@@ -70,7 +65,6 @@ public class AgendamentoServlet extends HttpServlet {
 			
 			
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
