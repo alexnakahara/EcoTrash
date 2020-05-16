@@ -1,0 +1,11 @@
+@charset "UTF-8";
+h1{
+	position: relative;
+    top: 50px;
+    float: center;
+	color: white;
+	text-align: center;
+}
+.container{
+	font-color: white;
+}
