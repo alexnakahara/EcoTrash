@@ -1,76 +1,76 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import models.Cliente;
-import models.Colaborador;
+import models.Usuario;
 
 public class UsuarioDao {
-	public void cadastrarUsuarioColaborador(Colaborador colaborador) {
-		String sqlInsert = "INSERT INTO usuario(id_Usuario, tx_cnpj, tx_cpf, tx_nome, tx_email, tx_senha, tx_telefone, dt_nascimento, tx_endereço, tx_endNumero, tx_bairro, tx_cidade, tx_uf, tx_cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		try (Connection conn = ConnectionFactory.obtemConexao();
-				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
-			stm.setInt(1, colaborador.getIdUsuario());
-			stm.setString(2, colaborador.getCnpj());
-			stm.setString(3, colaborador.getCpf());
-			stm.setString(4, colaborador.getNome());
-			stm.setString(5, colaborador.getEmail());
-			stm.setString(6, colaborador.getSenha());
-			stm.setString(7, colaborador.getTelefone());
-			stm.setDate(8, colaborador.getNacimento());
-			stm.setString(9, colaborador.getEndereco());
-			stm.setString(10, colaborador.getEndNumero());
-			stm.setString(11, colaborador.getBairro());
-			stm.setString(12, colaborador.getCidade());
-			stm.setString(13, colaborador.getUf());
-			stm.setString(14, colaborador.getCep());
+
+	private Connection conexao;
+
+	public UsuarioDao() {
+		this.conexao = ConnectionFactory.obtemConexao();
+	}
+
+	public void cadastrar(Usuario usu) {
+
+		String sqlInsert = "INSERT INTO usuario(tipo_perfil, tx_documento, tx_nome, tx_email, tx_senha, tx_telefone, dt_nascimento, tx_endereco,"
+				+ " tx_endNumero, tx_bairro, tx_cidade, tx_uf, tx_cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		try (PreparedStatement stm = conexao.prepareStatement(sqlInsert)) {
+
+			stm.setInt(1, usu.getTipoPerfil());
+			stm.setString(2, usu.getDocumento());
+			stm.setString(3, usu.getNome());
+			stm.setString(4, usu.getEmail());
+			stm.setString(5, usu.getSenha());
+			stm.setString(6, usu.getTelefone());
+			stm.setDate(7, (Date) usu.getNascimento());
+			stm.setString(8, usu.getEndereco());
+			stm.setString(9, usu.getEndNumero());
+			stm.setString(10, usu.getBairro());
+			stm.setString(11, usu.getCidade());
+			stm.setString(12, usu.getUf());
+			stm.setString(13, usu.getCep());
 			stm.execute();
-			String sqlQuery = "SELECT LAST_INSERT_ID()";
-			try (PreparedStatement stm2 = conn.prepareStatement(sqlQuery);
-					ResultSet rs = stm2.executeQuery();) {
-				if (rs.next()) {
-					colaborador.setIdUsuario(rs.getInt(1));
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	public static void cadastrarUsuarioCliente(Cliente cliente) {
-		String sqlInsert = "INSERT INTO usuarios(tx_cnpj, tx_cpf, tx_nome, tx_email, tx_senha, tx_telefone, dt_nascimento, tx_endereco, tx_endNumero, tx_bairro, tx_cidade, tx_uf, tx_cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		try (Connection conn = ConnectionFactory.obtemConexao();
-				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
-			//stm.setInt(1, cliente.getIdUsuario());
-			stm.setString(1, cliente.getCnpj());
-			stm.setString(2, cliente.getCpf());
-			stm.setString(3, cliente.getNome());
-			stm.setString(4, cliente.getEmail());
-			stm.setString(5, cliente.getSenha());
-			stm.setString(6, cliente.getTelefone());
-			stm.setDate(7, cliente.getNacimento());
-			stm.setString(8, cliente.getEndereco());
-			stm.setString(9, cliente.getEndNumero());
-			stm.setString(10, cliente.getBairro());
-			stm.setString(11, cliente.getCidade());
-			stm.setString(12, cliente.getUf());
-			stm.setString(13, cliente.getCep());
+
+	public Usuario createFastCliente(String documento, String email) {
+
+		String query = "INSERT INTO usuario(tipo_perfil, tx_documento, tx_email) VALUES(0, ?, ?)";
+
+		String getUser = "SELECT * FROM usuario WHERE tx_email =?";
+
+		try (PreparedStatement stm = conexao.prepareStatement(query);
+				PreparedStatement stm2 = conexao.prepareStatement(getUser)
+		) {
+
+			stm.setString(1, documento);
+			stm.setString(2, email);
 			stm.execute();
-			String sqlQuery = "SELECT LAST_INSERT_ID()";
-			try (PreparedStatement stm2 = conn.prepareStatement(sqlQuery);
-					ResultSet rs = stm2.executeQuery();) {
-				if (rs.next()) {
-					cliente.setIdUsuario(rs.getInt(1));
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
+			
+			stm2.setString(1, email);
+			ResultSet result = stm2.executeQuery();
+			Usuario usuario = new Usuario();
+			if (result.next()) {
+				usuario.setIdUsuario(result.getInt("id_usuario"));
+				usuario.setDocumento(result.getString("tx_documento"));
+				usuario.setEmail(result.getString("tx_email"));
 			}
+
+			return usuario;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		}
 	}
+
 }

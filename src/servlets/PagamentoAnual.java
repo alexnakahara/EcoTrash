@@ -1,6 +1,9 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,11 +24,20 @@ public class PagamentoAnual extends HttpServlet {
 		int numCartao = Integer.parseInt(request.getParameter("numCartao"));
 		int cvv = Integer.parseInt(request.getParameter("cvv"));
 		int plano = 3;
-		 //Get Method
-	
 		
-		Pagamento p = new Pagamento(mail, cpf, nomeCartao, numCartao, cvv, plano);
-		PagamentoDAO.pagar(p);
+		PrintWriter out = response.getWriter();
+		RequestDispatcher view;
+		Pagamento p = new Pagamento(mail, cpf, nomeCartao, numCartao, cvv, plano);	
+
+		if (PagamentoDAO.pagar(p)) {
+			out.print("<div style='-aler-success'>Pagamento realizado com sucesso!</div>");
+			view = request.getRequestDispatcher("Cadastro.html");
+
+		} else {
+			out.print("<div style='-aler-error'>Ocorreu um erro durante o pagamento, tente novamente!</div>");
+			view = request.getRequestDispatcher("simula.html");
+		}
+		view.forward(request, response);
 	}
 
 }

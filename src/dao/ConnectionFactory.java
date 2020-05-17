@@ -24,7 +24,7 @@ public class ConnectionFactory {
 			properties.setProperty("password", "alex1006");
 			properties.setProperty("useSSL", "false");
 			return DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/ecotrash?useTimezone=true&serverTimezone=UTC", properties);
+					.getConnection("jdbc:mysql://localhost:3306/ecotrash2020?useTimezone=true&serverTimezone=UTC", properties);
 		} catch (SQLException ex) {
 			System.err.println("N„o foi poss√≠vel conectar!");
 			ex.printStackTrace();

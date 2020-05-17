@@ -1,16 +1,15 @@
 package models;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Usuario {
 	private int idUsuario;
-	private String cnpj;
-	private String cpf;
+	private String documento;
 	private String nome;
 	private String email;
 	private String senha;
 	private String telefone;
-	private Date nacimento;
+	private Date nascimento;
 	private String endereco;
 	private String endNumero;
 	private String bairro;
@@ -19,53 +18,42 @@ public class Usuario {
 	private String cep;
 	private int tipoPerfil;
 	
-	// Constructors
-	public Usuario(int idUsuario, String cnpj, String cpf, String nome, String email, String senha, String telefone,
-			Date nacimento, String endereco, String endNumero, String bairro, String cidade, String uf, String cep, int tipoPerfil) {
-		super();
-		this.idUsuario = idUsuario;
-		this.cnpj = cnpj;
-		this.cpf = cpf;
+	public Usuario(int tipoPerfil, String documento, String nome, String email, String senha, String telefone,
+			Date nascimento, String endereco, String endNumero, String bairro, String cidade, String uf, String cep) {
+		this.tipoPerfil = tipoPerfil;
+		this.documento = documento;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
 		this.telefone = telefone;
-		this.nacimento = nacimento;
+		this.nascimento = nascimento;
 		this.endereco= endereco;
 		this.endNumero = endNumero;
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.uf = uf;
 		this.cep = cep;
-		this.tipoPerfil = tipoPerfil;
-	}
-	public Usuario(){
-		
 	}
 	
+	public Usuario(){}
+
 	public int getIdUsuario() {
 		return idUsuario;
 	}
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	public String getCnpj() {
-		return cnpj;
-	}
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public String getDocumento() {
+		return documento;
+	}
+	public void setDocumento(String documento) {
+		this.documento = documento;
 	}
 	public String getEmail() {
 		return email;
@@ -85,11 +73,11 @@ public class Usuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public Date getNacimento() {
-		return nacimento;
+	public Date getNascimento() {
+		return nascimento;
 	}
-	public void setNacimento(Date nacimento) {
-		this.nacimento = nacimento;
+	public void setNascimento(Date nacimento) {
+		this.nascimento = nacimento;
 	}
 	public String getEndereco() {
 		return endereco;
