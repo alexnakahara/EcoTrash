@@ -1,0 +1,38 @@
+body {
+	background-image: url(../img/back3.jpg);
+}
+h1{
+	position: relative;
+    top: 50px;
+    float: center;
+	color: white;
+	text-align: center;
+}
+#card1{
+	position: absolute;
+	left: 20px;
+	top: 5px;
+}
+
+#card2{
+	position: absolute;
+	left: 400px;
+	top: 5px;
+}
+
+#card3{
+	position: absolute;
+	left: 800px;
+	top: 5px;
+}
+#cards{
+  position: relative;
+  top: 60px;
+
+}
+h4 {
+	color: rgb(34, 20, 43);
+}
+#rodape{
+	font-size: 10px;
+}

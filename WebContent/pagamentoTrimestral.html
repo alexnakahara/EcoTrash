@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<title>EcoTrash - Cadastro</title>
+<meta charset="utf-8">
+<!--Boostrap css-->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<!-- Fontes awelsome -->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous" />
+<!-- Font Google-->
+<link
+	href="https://fonts.googleapis.com/css?family=Amatic+SC|Press+Start+2P&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
+	rel="stylesheet">
+<!--My css-->
+<link rel="stylesheet" type="text/css" href="css/pagamentoMensal.css">
+</head>
+<body>
+	<h1>Plano Trimestral</h1>
+	<div class="container">
+
+		<form action="PagamentoTrimestral.do" method="post">
+			<div class="form-group">
+				<div class="card-body">
+					<h5 class="card-title">Trimestral</h5>
+					<p class="card-text">Plano mensal de serviços da EcoTrash,
+						fazendo aproximadamente de 12 a 15 coletas no Período trimestral.
+						Recomendado para clientes que obtém comércio ou que produz grande
+						quantidade de produtos recicláveis a serem descartados pelas suas
+						residências.</p>
+					<hr>
+					<h4 class="card-text" id="preco">3 X 120$</h4>
+					<hr>
+					<label for="inputEmail4">Nome</label> <input type="text"
+						class="form-control"
+						placeholder="Digite o Nome da mesma forma que está no Cartão de crédito"
+						name="nome">
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="inputPassword4">E-mail</label> <input type="email"
+							class="form-control"
+							placeholder="Digite o E-mail do Titular do Cartão" name="mail">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="inputAddress">CPF</label> <input type="text"
+							class="form-control"
+							placeholder="Digite  o CPF do titular do Cartão" name="cpf">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="inputAddress2">Número do Cartão</label> <input
+							type="E-mail" class="form-control" id="inputEmail4"
+							placeholder="XXXX - XXXX - XXXX - XX" name="numCartao">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="inputAddress2">CVV</label> <input type="Password"
+							class="form-control" placeholder="XXX" name="cvv">
+					</div>
+				</div>
+				<div class="form-group">
+					<hr>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="gridCheck">
+						<label class="form-check-label" for="gridCheck"> Eu li e
+							concordo com as <a href="#"> Condições de uso</a>
+						</label>
+					</div>
+				</div>
+				<hr>
+				<button type="submit" class="btn btn-dark">Enviar</button>
+				<hr>
+		</form>
+	</div>
+
+</body>
+</html>
