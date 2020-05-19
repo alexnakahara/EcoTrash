@@ -1,94 +1,115 @@
 body {
-  font-family: Arial !important;
-  font-size: 14px !important;
-  background-image: url(../img/back.jpg);
-}
-
-.logo {
-  height: 70px;
-}
-.logo__img {
-  width: 115px;
-}
-/* remove a navbar em desktop */
-.navbar {
-  display: none !important;
+	font-family: Arial !important;
+	font-size: 14px !important;
+	background-image: url(../img/back.jpg);
 }
 
 header {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  background-color: #73bf45;
-  height: 70px;
+	background-color: #73bf45;
+	height: 70px;
 }
+
+/* remove a navbar em desktop */
+.mobile-menu {
+	display: none !important;
+}
+
+.desk-menu {
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo {
+	height: 70px;
+}
+
+.logo__img {
+	width: 115px;
+}
+
 .menu {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-row-gap: 1rem;
-  width: 868px;
-  margin: auto;
-  background-color: #73bf45;
-  height: 70px;
-  align-items: center;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-row-gap: 1rem;
+	width: 868px;
+	margin: auto;
+	background-color: #73bf45;
+	height: 70px;
+	align-items: center;
 }
+
 .menu__text {
-  color: #002639;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  padding: 25px;
+	color: #002639;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	padding: 25px;
 }
+
 .menu__text:hover {
-  background-color: #002639;
-  color: #ff79c6;
+	background-color: #002639;
+	color: #ff79c6;
 }
+
 .login {
-  width: 100px;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  color: #002639;
+	width: 100px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+	color: #002639;
 }
+
 .login:hover {
-  background-color: #002639;
-  cursor: pointer;
-  color: #ff79c6;
+	background-color: #002639;
+	cursor: pointer;
+	color: #ff79c6;
 }
 
 .formulario {
-  width: 423px;
-  border: solid 1px #50fa7b;
-  border-radius: 10px;
-  padding: 30px;
+	width: 423px;
+	border: solid 1px #50fa7b;
+	border-radius: 10px;
+	padding: 30px;
+}
+
+.form-lg {
+	background: white;
+	padding: 16px;
 }
 
 .-flexcenter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .-agendamento-card {
-  width: 600px;
+	margin-top: 30px;
+	width: 600px;
 }
 
-@media screen and (max-width: 678px) {
-  /* menu */
-  header {
-    background: none;
-  }
-  .menu {
-    display: none;
-  }
-  .navbar {
-    display: block !important;
-    background-color: #50fa7b !important;
-  }
-  .bg {
-    background-color: #50fa7b !important;
-    position: relative;
-  }
+@media screen and (max-width: 700px) {
+	/* menu */
+	header {
+		background: none;
+	}
+	.desk-menu {
+		display: none !important;
+	}
+	.mobile-menu {
+		display: block !important;
+		background-color: #50fa7b !important;
+	}
+	.navbar {
+		border-bottom: 1px solid black !important;
+	}
+	.collapse__menu {
+		position: relative;
+		background-color: #50fa7b !important;
+		border-bottom: 1px solid black;
+		z-index: 9;
+	}
 }
