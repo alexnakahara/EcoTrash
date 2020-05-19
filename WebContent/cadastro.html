@@ -53,16 +53,17 @@
 		</div>
 	</header>
 	<div class="container">
-		<h3 class="d-flex justify-content-center">Faça seu Cadastro</h3>
-
+		<div class="titulo">
+			<h2>Faça seu cadastro</h2>
+		</div>
 		<form class="form-lg" action="CadastrarUsuario.do" method="post">
 			<div class="form-group">
-				<label for="inputEmail4">Nome</label> <input type="text"
-					class="form-control" id="inputEmail4" name="nome">
+				<label for="nome">Nome</label> <input type="text"
+					class="form-control" id="nome" name="nome">
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="inputPassword4">Tipo de Perfil</label> <select
+					<label for="tipoPerfil">Tipo de Perfil</label> <select
 						class="form-control" id="tipoPerfil" name="tipoPerfil">
 						<option value="0">Cliente</option>
 						<option value="1">Colaborador</option>
@@ -78,53 +79,53 @@
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="inputAddress2">E-mail</label> <input type="E-mail"
-						class="form-control" id="inputEmail4"
+					<label for="mail">E-mail</label> <input type="email"
+						class="form-control" id="mail"
 						placeholder="Insira um E-mail Válido" name="mail">
 				</div>
 				<div class="form-group col-md-6">
-					<label for="inputAddress2">Senha</label> <input type="Password"
-						class="form-control" id="inputAddress2" name="senha">
+					<label for="senha">Senha</label> <input type="Password"
+						class="form-control" id="senha" name="senha">
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="inputFone4">Telefone</label> <input type="text"
-						class="form-control" id="inputPassword4"
-						placeholder="(XX) 9 XXXX-XXXX" name="fone">
+					<label for="fone">Telefone</label> <input type="text"
+						class="form-control" id="fone" placeholder="(XX) 9 XXXX-XXXX"
+						name="fone">
 				</div>
 				<div class="form-group col-md-6">
-					<label for="inputDate4">Data de Nascimento</label> <input
-						type="text" class="form-control" id="inputPassword4"
-						placeholder="DD/MM/AAAA" name="date">
+					<label for="dt_nascimento">Data de Nascimento</label> <input
+						type="date" class="form-control" id="dt_nascimento"
+						placeholder="10/06/1999" name="dt_nascimento">
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="inputCity">Endereço</label> <input type="text"
-						class="form-control" id="inputCity" name="endereco">
+					<label for="endereco">Endereço</label> <input type="text"
+						class="form-control" id="endereco" name="endereco">
 				</div>
 				<div class="form-group col-md-4">
-					<label for="inputCity">Bairro</label> <input type="text"
-						class="form-control" id="inputCity" name="bairro">
+					<label for="bairro">Bairro</label> <input type="text"
+						class="form-control" id="bairro" name="bairro">
 				</div>
 				<div class="form-group col-md-2">
-					<label for="inputZip">Número</label> <input type="text"
-						class="form-control" id="inputZip" name="numero">
+					<label for="nu">Número</label> <input type="text"
+						class="form-control" id="nu" name="numero">
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="inputCity">Cidade</label> <input type="text"
-						class="form-control" id="inputCity" name="cidade">
+					<label for="cidade">Cidade</label> <input type="text"
+						class="form-control" id="cidade" name="cidade">
 				</div>
 				<div class="form-group col-md-4">
-					<label for="inputCity">UF</label> <input type="text"
-						class="form-control" id="inputCity" name="uf">
+					<label for="uf">UF</label> <input type="text" class="form-control"
+						id="uf" name="uf">
 				</div>
 				<div class="form-group col-md-2">
-					<label for="inputZip"> CEP</label> <input type="text"
-						class="form-control" id="inputZip" name="cep">
+					<label for="cep"> CEP</label> <input type="text"
+						class="form-control" id="cep" name="cep">
 				</div>
 			</div>
 
@@ -132,7 +133,6 @@
 		</form>
 	</div>
 
-	<script src="js/index.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 		crossorigin="anonymous"></script>
