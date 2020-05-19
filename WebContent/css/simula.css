@@ -1,38 +1,26 @@
-body {
-	background-image: url(../img/back3.jpg);
-}
-h1{
-	position: relative;
-    top: 50px;
-    float: center;
-	color: white;
-	text-align: center;
-}
-#card1{
-	position: absolute;
-	left: 20px;
-	top: 5px;
+.content-cards {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-#card2{
-	position: absolute;
-	left: 400px;
-	top: 5px;
+.card {
+	width: 18rem;
 }
 
-#card3{
-	position: absolute;
-	left: 800px;
-	top: 5px;
-}
-#cards{
-  position: relative;
-  top: 60px;
-
-}
 h4 {
 	color: rgb(34, 20, 43);
 }
-#rodape{
+
+#rodape {
 	font-size: 10px;
+}
+
+@media screen and (max-width: 700px) {
+	.content-cards {
+		flex-direction: column;
+	}
+	.card {
+		margin-bottom: 2rem;
+	}
 }

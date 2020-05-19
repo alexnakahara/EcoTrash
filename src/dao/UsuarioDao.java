@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +14,7 @@ public class UsuarioDao {
 		this.conexao = ConnectionFactory.obtemConexao();
 	}
 
-	public void cadastrar(Usuario usu) {
+	public boolean cadastrar(Usuario usu) {
 
 		String sqlInsert = "INSERT INTO usuario(tipo_perfil, tx_documento, tx_nome, tx_email, tx_senha, tx_telefone, dt_nascimento, tx_endereco,"
 				+ " tx_endNumero, tx_bairro, tx_cidade, tx_uf, tx_cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -28,7 +27,7 @@ public class UsuarioDao {
 			stm.setString(4, usu.getEmail());
 			stm.setString(5, usu.getSenha());
 			stm.setString(6, usu.getTelefone());
-			stm.setDate(7, (Date) usu.getNascimento());
+			stm.setDate(7, new java.sql.Date(usu.getNascimento().getTime()));
 			stm.setString(8, usu.getEndereco());
 			stm.setString(9, usu.getEndNumero());
 			stm.setString(10, usu.getBairro());
@@ -36,9 +35,11 @@ public class UsuarioDao {
 			stm.setString(12, usu.getUf());
 			stm.setString(13, usu.getCep());
 			stm.execute();
+			return true;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 

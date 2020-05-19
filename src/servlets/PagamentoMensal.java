@@ -24,9 +24,7 @@ public class PagamentoMensal extends HttpServlet {
 		int numCartao = Integer.parseInt(request.getParameter("numCartao"));
 		int cvv = Integer.parseInt(request.getParameter("cvv"));
 		int plano = 1;
-		 //Get Method
-	
-		
+
 		PrintWriter out = response.getWriter();
 		RequestDispatcher view;
 		Pagamento p = new Pagamento(mail, cpf, nomeCartao, numCartao, cvv, plano);
