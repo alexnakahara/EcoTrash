@@ -4,19 +4,19 @@ public class Pagamento implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private int numeroDoCartao, numeroDeSegurança, plano;
+	private int numeroDoCartao, numeroDeSeguranca, plano;
 
 	private String cpf, email, nomeNoCartao;
 
 	public Pagamento() {
 	}
 
-	public Pagamento(String email, String cpf, String nomeNoCartao, int numeroDoCartao, int numeroDeSegurança, int plano) {
+	public Pagamento(String email, String cpf, String nomeNoCartao, int numeroDoCartao, int numeroDeSeguranca, int plano) {
 		this.email = email;
 		this.cpf = cpf;
 		this.nomeNoCartao = nomeNoCartao;
 		this.numeroDoCartao = numeroDoCartao;
-		this.numeroDeSegurança = numeroDeSegurança;
+		this.numeroDeSeguranca = numeroDeSeguranca;
 		this.plano = plano;
 	}
 
@@ -36,12 +36,12 @@ public class Pagamento implements java.io.Serializable {
 		this.numeroDoCartao = numeroDoCartao;
 	}
 
-	public int getNumeroDeSegurança() {
-		return numeroDeSegurança;
+	public int getNumeroDeSeguranca() {
+		return numeroDeSeguranca;
 	}
 
-	public void setNumeroDeSegurança(int numeroDeSegurança) {
-		this.numeroDeSegurança = numeroDeSegurança;
+	public void setNumeroDeSeguranca(int numeroDeSeguranca) {
+		this.numeroDeSeguranca = numeroDeSeguranca;
 	}
 
 	public String getCpf() {
