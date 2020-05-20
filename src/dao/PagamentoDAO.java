@@ -23,7 +23,7 @@ public class PagamentoDAO {
 
 			stm.setString(1, pagamento.getNomeNoCartao());
 			stm.setInt(2, pagamento.getNumeroDoCartao());
-			stm.setInt(3, pagamento.getNumeroDeSegurança());
+			stm.setInt(3, pagamento.getNumeroDeSeguranca());
 			stm.setInt(4, pagamento.getPlano());
 			stm.setInt(5, usuario.getIdUsuario());
 
@@ -32,7 +32,7 @@ public class PagamentoDAO {
 
 		} catch (SQLException ex) {
 
-			System.err.println("Não foi possível manipular a tabela Pagamento.");
+			System.err.println("Nï¿½o foi possï¿½vel manipular a tabela Pagamento.");
 			ex.printStackTrace();
 			return false;
 		}
