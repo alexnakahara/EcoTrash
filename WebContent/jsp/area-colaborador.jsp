@@ -32,7 +32,7 @@
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 			ArrayList<Agendamento> listAgenda = agendaDao.listAgendamentosDisponiveis();
 		%>
-		<div class="d-flex justify-content-between">
+		<div class="d-flex justify-content-between align-items-center">
 			<div class="header__nome">
 				Olá,
 				<%=u.getNome()%>
