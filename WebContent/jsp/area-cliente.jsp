@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="models.Usuario"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Date"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="models.Agendamento"%>
 <%@page import="dao.AgendamentoDAO"%>
@@ -18,8 +18,10 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/area-usuario.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/area-usuario.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/style.css">
 
 <!-- Para funcionar o component de datepicker -->
 <link rel="stylesheet" type="text/css"
@@ -50,7 +52,13 @@
 				Olá,
 				<%=u.getNome()%>
 			</div>
-			<a href="/EcoTrash" class="header__sair">Sair</a>
+			<form class="header__sair"
+				action="${pageContext.request.contextPath}/ServletController.do"
+				method="post">
+				<button class="btn" type="submit" name="acao" value="Logout">
+					<i class="fas fa-sign-out-alt"></i>
+				</button>
+			</form>
 		</div>
 	</header>
 	<div class="container">
@@ -85,7 +93,7 @@
 					<div class="row2">
 						<div class="row2__text d-flex">
 							<div class="font-weight-bold mr-2">Data:</div>
-							<%= dateFormat.format(item.getDtAgendada()) %>
+							<%=dateFormat.format(item.getDtAgendada())%>
 						</div>
 						<div class="row2__text d-flex">
 							<div class="font-weight-bold mr-2">Descrição:</div>
@@ -98,7 +106,6 @@
 			<%
 				}
 			%>
-
 		</div>
 
 		<!-- Modal de Agendamento de Coleta-->
@@ -135,9 +142,9 @@
 
 
 							<div class="form-group">
-								<label class="control-label">Descrição</label> 
-								<textarea type="text" class="form-control" name="descricao" rows="4"
-									id="descricao"></textarea>
+								<label class="control-label">Descrição</label>
+								<textarea type="text" class="form-control" name="descricao"
+									rows="4" id="descricao"></textarea>
 							</div>
 
 
@@ -150,9 +157,8 @@
 				</div>
 			</div>
 		</div>
-
-
 	</div>
+	
 	<script src="https://kit.fontawesome.com/e71e2a1db7.js"
 		crossorigin="anonymous"></script>
 </body>

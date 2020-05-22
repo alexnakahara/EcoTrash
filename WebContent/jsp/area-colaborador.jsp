@@ -38,9 +38,8 @@
 				<%=u.getNome()%>
 			</div>
 			<form  class="header__sair" action="${pageContext.request.contextPath}/ServletController.do" method="post">
-				<input type="submit" name="acao" value="Logout" />
+				<button class="btn"type="submit" name="acao" value="Logout"> <i class="fas fa-sign-out-alt"></i></button>
 			</form>
-			
 		</div>
 	</header>
 	<div class="container">
