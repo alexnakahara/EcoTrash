@@ -5,6 +5,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="dao.AgendamentoDAO"%>
 <%@page import="models.Usuario"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,15 +17,17 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="css/area-usuario.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/area-usuario.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/style.css">
 
 </head>
 <body>
 	<header class="header">
 		<div class="header__logo">EcoTrash</div>
 		<%
-			Usuario u = (Usuario) request.getAttribute("usuario");
+			Usuario u = (Usuario) request.getSession().getAttribute("usuario");
 			AgendamentoDAO agendaDao = new AgendamentoDAO();
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 			ArrayList<Agendamento> listAgenda = agendaDao.listAgendamentosDisponiveis();
@@ -34,7 +37,10 @@
 				Olá,
 				<%=u.getNome()%>
 			</div>
-			<a href="/EcoTrash" class="header__sair">Sair</a>
+			<form  class="header__sair" action="${pageContext.request.contextPath}/ServletController.do" method="post">
+				<input type="submit" name="acao" value="Logout" />
+			</form>
+			
 		</div>
 	</header>
 	<div class="container">
@@ -58,10 +64,12 @@
 					</div>
 					<div class="row2">
 						<div class="row2__text d-flex">
-							<div class="font-weight-bold mr-2">Data:</div> <%=dateFormat.format(item.getDtAgendada())%>
+							<div class="font-weight-bold mr-2">Data:</div>
+							<%=dateFormat.format(item.getDtAgendada())%>
 						</div>
 						<div class="row2__text d-flex">
-							<div class="font-weight-bold mr-2">Descrição:</div> <%=item.getDescricao()%>
+							<div class="font-weight-bold mr-2">Descrição:</div>
+							<%=item.getDescricao()%>
 						</div>
 					</div>
 				</div>

@@ -6,6 +6,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="models.Agendamento"%>
 <%@page import="dao.AgendamentoDAO"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +18,8 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="css/area-usuario.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/area-usuario.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 
 <!-- Para funcionar o component de datepicker -->
 <link rel="stylesheet" type="text/css"
@@ -33,13 +34,13 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-<script src="js/index.js"></script>
+<script src="${pageContext.request.contextPath}/js/index.js"></script>
 </head>
 <body>
 	<header class="header">
 		<div class="header__logo">EcoTrash</div>
 		<%
-			Usuario u = (Usuario) request.getAttribute("usuario");
+			Usuario u = (Usuario) request.getSession().getAttribute("usuario");
 			AgendamentoDAO agendaDao = new AgendamentoDAO();
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 			ArrayList<Agendamento> listAgenda = agendaDao.listAgendamentosByCliente(u.getIdUsuario());
