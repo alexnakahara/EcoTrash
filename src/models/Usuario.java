@@ -17,6 +17,7 @@ public class Usuario {
 	private String uf;
 	private String cep;
 	private int tipoPerfil;
+	private String Cnpj_cpf;
 	
 	public Usuario(int tipoPerfil, String documento, String nome, String email, String senha, String telefone,
 			Date nascimento, String endereco, String endNumero, String bairro, String cidade, String uf, String cep) {
@@ -120,6 +121,37 @@ public class Usuario {
 	}
 	public void setTipoPerfil(int tipoPerfil) {
 		this.tipoPerfil = tipoPerfil;
+	}
+
+	public String getCnpj_cpf(String Cnpj_cpf) {
+		return Cnpj_cpf;
+	}
+	
+	public void setCnpj_cpf(String Cnpj_cpf) {
+		this.Cnpj_cpf = Cnpj_cpf;
+	}
+
+	public void setPago(boolean boolean1) {
+		
+	}
+
+	public void setIdServico(int int1) {
+		
+	}
+
+	public boolean isPago() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String getTipoUsuario() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getIdServico() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

@@ -45,8 +45,8 @@ public class CadastrarUsuario extends HttpServlet {
 			Date dataNascimento = dateFormat.parse(data);
 			Usuario u = new Usuario(tipoPerfil, documento, nome, mail, senha,fone, dataNascimento, endereco, numero,bairro, cidade, uf, cep);
 
-			if(daoUsuario.cadastrar(u)) {
-				out.print("<script> alert('Usuário cadastrado com sucesso!')</script>");
+			if(daoUsuario.cadastrarUsuario(u)) {
+				out.print("<script> alert('Usuï¿½rio cadastrado com sucesso!')</script>");
 				RequestDispatcher rd = request.getRequestDispatcher("login.html");
 				rd.include(request, response);
 			}else {

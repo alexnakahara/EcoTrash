@@ -11,7 +11,7 @@ public class Agendamento {
 	private String descricao;
 	
 	public Agendamento() {}
-	//Não coloca o colobarador quando cria
+	//Nï¿½o coloca o colobarador quando cria
 	public Agendamento(int idCliente, Timestamp dtAgendada, String descricao, String tx_titulo) {
 		this.idCliente = idCliente;
 		this.dtAgendada = dtAgendada;
@@ -65,6 +65,55 @@ public class Agendamento {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public int getIdUsuarios() {
+		return 0;
+	}
+	public String getData() {
+		return null;
+	}
+	public String getTexto() {
+		return null;
+	}
+	public String getNome() {
+		return null;
+	}
+	public int getIdColetador() {
+		return 0;
+	}
+	public String getDesc() {
+		return null;
+	}
+	public String getHorario() {
+		return null;
+	}
+	public void setIdColetador(int int1) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setData(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setNome(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setDesc(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setTexto(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setHorario(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setIdUsuarios(int int1) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
