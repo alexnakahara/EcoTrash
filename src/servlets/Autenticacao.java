@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dao.AutenticacaoDAO;
 import models.Usuario;
-
 @WebServlet("/Autenticacao.do")
 public class Autenticacao extends HttpServlet {
 	private static final long serialVersionUID = 1L;

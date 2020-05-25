@@ -29,7 +29,7 @@ public class AgendamentoDAO {
 			pst.setString(4, agendamento.getDescricao());
 			pst.execute();
 			return true;
-			
+
 		} catch (SQLException ex) {
 
 			System.err.println("N�o foi poss�vel cadastrar o agendamento");
@@ -98,12 +98,15 @@ public class AgendamentoDAO {
 		}
 	}
 	
-	public ArrayList<Agendamento> listAgendamentosByColaborador(int id_colaborador) {
+	// Lista agendamentos que o colaborador confirmou os q estão disponiveis
+	public ArrayList<Agendamento> listAgendamentosDisponiveis(int id_colaborado) { 
+		String query = "SELECT * FROM agendamento WHERE dt_agendada >= UTC_TIMESTAMP() AND id_colaborador = ?\r\n"
+				+ "UNION\r\n"
+				+ "SELECT * FROM agendamento WHERE dt_agendada >= UTC_TIMESTAMP() AND id_colaborador IS NULL;";
 
-		String inserir = "SELECT * FROM agendamento WHERE id_colaborador =?";
+		try (PreparedStatement pst = conexao.prepareStatement(query)) {
 
-		try (PreparedStatement pst = conexao.prepareStatement(inserir)) {
-			pst.setInt(1, id_colaborador);
+			pst.setInt(1, id_colaborado);
 			ResultSet resultado = pst.executeQuery();
 
 			ArrayList<Agendamento> lista = new ArrayList<>();
@@ -127,33 +130,21 @@ public class AgendamentoDAO {
 			return null;
 		}
 	}
-	
-	public ArrayList<Agendamento> listAgendamentosDisponiveis() {
 
-		String inserir = "SELECT * FROM agendamento WHERE id_colaborador IS NULL  AND dt_agendada >= UTC_TIMESTAMP()";
+	public static void confirmarRetirada(int id_colaborador, int id_agendamento) {
 
-		try (PreparedStatement pst = conexao.prepareStatement(inserir)) {
-			ResultSet resultado = pst.executeQuery();
+		String sqlInsert = "UPDATE agendamento SET id_colaborador = ? WHERE id_agendamento = ? ";
 
-			ArrayList<Agendamento> lista = new ArrayList<>();
-			while (resultado.next()) {
-				Agendamento a = new Agendamento();
-				a.setIdAgendamento(resultado.getInt("id_agendamento"));
-				a.setTitulo(resultado.getString("tx_titulo"));
-				a.setDescricao(resultado.getString("tx_descricao"));
-				a.setDtAgendada(resultado.getTimestamp("dt_agendada"));
-				a.setIdColaborador(resultado.getInt("id_colaborador"));
-				a.setIdCliente(resultado.getInt("id_cliente"));
-				lista.add(a);
-			}
-			return lista;
+		try (Connection conn = ConnectionFactory.obtemConexao();
+				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
+			stm.setInt(1, id_colaborador);
+			stm.setInt(2, id_agendamento);
+			stm.execute();
 
 		} catch (SQLException ex) {
 
-			System.err.println("Não foi possível manipular " + "a tabela Agendamento.");
 			ex.printStackTrace();
 
-			return null;
 		}
 	}
 }

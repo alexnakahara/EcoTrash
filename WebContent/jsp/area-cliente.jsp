@@ -145,8 +145,6 @@
 								<textarea type="text" class="form-control" name="descricao"
 									rows="4" id="descricao"></textarea>
 							</div>
-
-
 						</form>
 					</div>
 					<div class="modal-footer">
@@ -156,6 +154,7 @@
 				</div>
 			</div>
 		</div>
+		
 	</div>
 	
 	<script src="https://kit.fontawesome.com/e71e2a1db7.js"

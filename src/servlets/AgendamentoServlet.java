@@ -41,7 +41,7 @@ public class AgendamentoServlet extends HttpServlet {
 		String descricao = request.getParameter("descricao");
 		int id = Integer.parseInt(request.getParameter("id_cliente"));
 		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter saida = response.getWriter();
+		PrintWriter out = response.getWriter();
 		String data = request.getParameter("dt_agendamento");
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");// recebe nesse formato, tem que estar assim
@@ -57,17 +57,17 @@ public class AgendamentoServlet extends HttpServlet {
 			Agendamento agendamento = new Agendamento(id, timestamp, descricao, titulo);
 			
 			if(dao.cadastrar(agendamento)) {
-				saida.print("<div>Agendamento feito com sucesso</div>");
+				response.sendRedirect("jsp/area-cliente.jsp");
 			} else {
-				saida.print("<div>Houve um erro no agendamento, tente novamente!</div>");
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Ocorreu um erro no agendamento, tente novamente!');");
+				out.println("</script>");
+				request.getRequestDispatcher("jsp/area-cliente.jsp").forward(request, response);
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("jsp/area-cliente.jsp");
-			rd.include(request, response);
 			
 			
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

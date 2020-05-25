@@ -27,6 +27,6 @@
 		</error-page> -->
 
 	<session-config>
-		<session-timeout>10</session-timeout> <!-- 10 minutos -->
+		<session-timeout>15</session-timeout> <!-- 15 minutos -->
 	</session-config>
 </web-app>
