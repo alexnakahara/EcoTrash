@@ -120,8 +120,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form id="myForm" class="panel-body" method="post"
-							action="Agendamento.do">
+						<form id="myForm" class="panel-body" method="post" action="${pageContext.request.contextPath}/Agendamento.do">
 							<div class="form-group">
 								<label class="control-label">Dia e horário de coleta</label> <input
 									hidden type="number" class="form-control" name="id_cliente"
