@@ -67,6 +67,15 @@
 					out.print(
 							"<div class='item-agendamento' data-toggle='modal' data-target='#modalForm' onclick='openAgendamento("
 									+ gson.toJson(item) + ")'>");
+					if (item.getIdColaborador() != 0) {
+			%>
+			<div class="badge-status">
+				<span class="badge badge-success"> <i class="fas fa-check"></i>
+					<div class="badge-status__text">Confirmado</div>
+				</span>
+			</div>
+			<%
+				}
 			%>
 			<div class="col1">
 				<i class="far fa-calendar-alt"></i>
@@ -86,6 +95,15 @@
 					</div>
 				</div>
 			</div>
+			<%
+				if (item.getIdColaborador() == 0) {
+			%>
+
+			<button class="btn btn-primary" id="btn-confirmar">Confirmar</button>
+
+			<%
+				}
+			%>
 		</div>
 
 		<%
@@ -94,36 +112,40 @@
 
 		<!-- Modal de Agendamento de Coleta-->
 		<div class="modal" tabindex="-1" role="dialog" id="modalForm">
-			<div class="modal-dialog  modal-lg" role="document">
+			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<div class="modal-title">Agendamento</div>
+						<div class="modal-title" id="titleDetalheColeta"></div>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">
-						<form id="myForm" class="panel-body" method="post" action="${pageContext.request.contextPath}/ServletController.do">
-							<div class="form-group">
+					<div class="modal-body" id="modal-agendamento">
+						<form id="myForm" class="panel-body" method="post"
+							action="${pageContext.request.contextPath}/ServletController.do">
+							<div class="form-group -form-group2">
 								<label class="control-label text-center"></label> id_colaborador<input
-									type="text" class="form-control" name="id_colaborador" value="<%=u.getIdUsuario()%>"/>
+									type="text" class="form-control" name="id_colaborador"
+									value="<%=u.getIdUsuario()%>" />
 							</div>
 
-							<div class="form-group">
-								<label class="control-label">id_agendamento</label>
-								<input type="text" class="form-control" name="id_agendamento" id="id_agendamento"/>
-								<input type="hidden" class="form-control" name="acao" value="confirmarRetirada"/>
+							<div class="form-group -form-group2">
+								<label class="control-label">id_agendamento</label> <input
+									type="number" class="form-control" name="id_agendamento"
+									id="id_agendamento" value="" /> <input type="hidden"
+									class="form-control" name="acao" value="confirmarRetirada" />
 							</div>
 						</form>
+						<div class="-infoAgendamento"></div>
 					</div>
 					<div class="modal-footer d-flex justify-content-center">
-						<button type="submit" class="btn btn-danger" onclick="onSubmitAgendar()")>Confirmar Agendamento</button>
+						<button type="submit" class="btn btn-danger"
+							onclick="onSubmitAgendar()" )>Confirmar Agendamento</button>
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<script src="https://kit.fontawesome.com/e71e2a1db7.js"

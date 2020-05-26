@@ -133,12 +133,10 @@
 								</div>
 							</div>
 
-
 							<div class="form-group">
 								<label class="control-label text-center">Título</label> <input
 									type="text" class="form-control" name="titulo" id="titulo">
 							</div>
-
 
 							<div class="form-group">
 								<label class="control-label">Descrição</label>
