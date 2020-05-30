@@ -100,11 +100,6 @@ body {
 	grid-row-gap: 13px;
 }
 
--infoAgendamento__container {
-	display: grid;
-	grid-template-rows: repeat(2, 1fr);
-}
-
 .-infoAgendamento__text {
 	text-align: center;
 	font-weight: bold;

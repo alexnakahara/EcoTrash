@@ -73,5 +73,34 @@ public class UsuarioDao {
 			return null;
 		}
 	}
+	
+	public Usuario getUsuario(int id_usuario) {
+		String query = "SELECT tx_nome, tx_telefone, tx_endereco, tx_endNumero, tx_bairro, tx_cep, tx_uf, tx_cidade "
+				+ "FROM usuario WHERE id_usuario =?";
+		
+		try (PreparedStatement stm = conexao.prepareStatement(query)) {
+			
+			stm.setInt(1, id_usuario);
+			ResultSet result = stm.executeQuery();
+			Usuario u = new Usuario();
+			
+			if(result.next()) {
+				u.setNome(result.getString("tx_nome"));
+				u.setTelefone(result.getString("tx_telefone"));
+				u.setEndereco(result.getString("tx_endereco"));
+				u.setEndNumero(result.getString("tx_endNumero"));
+				u.setBairro(result.getString("tx_bairro"));
+				u.setCep(result.getString("tx_cep"));
+				u.setUf(result.getString("tx_uf"));
+				u.setCidade(result.getString("tx_cidade"));
+			}
+			
+			return u; 
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 }
