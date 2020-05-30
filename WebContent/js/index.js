@@ -20,11 +20,16 @@ function getUser(agendamento) {
 	const params = `acao=getUsuario&id_cliente=${agendamento.idCliente}`;
 	http.open('POST', url, true);
 	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	
 	http.onreadystatechange = function() {
+		
 	    if(http.readyState == 4 && http.status == 200) {
+	    	
+	    	const objResp = JSON.parse(http.response);
 	    	const data = moment(agendamento.dtAgendada).format('LLL');
-	        const objResp = JSON.parse(http.response);
-	        const cliente = {
+	        const btnConfirm = document.querySelector('#confirmarAgendamento'); 
+	        btnConfirm.disabled = false;
+	        const cliente = {										
 	        		bairro: objResp.bairro,
         			cep: objResp.cep,
         			cidade: objResp.cidade,
@@ -34,9 +39,9 @@ function getUser(agendamento) {
         			telefone: objResp.telefone,
         			uf: objResp.uf
 	        };
-	        const btnConfirm = document.querySelector('#confirmarAgendamento');
-	        btnConfirm.disabled = false;
+
 	        if (cliente.nome || cliente.endereco) { // Garantia que vai ter o dados do cliente
+	        	verifyIfConfirmed(agendamento.idColaborador, btnConfirm);
 	        	const endereco = `${cliente.endereco}, ${cliente.endNumero} - ${cliente.bairro},
 	        		${cliente.cidade}/${cliente.uf} - ${cliente.cep}.`;
 	        	bodyData.innerHTML= `<div>
@@ -61,12 +66,15 @@ function getUser(agendamento) {
 							        		<div class="-infoAgendamento__icons__text">${agendamento.descricao}</div>
 						        		</div>
 						        	</div>`;
+	        
 	        } else {
 	        	btnConfirm.disabled = true;
+	        	btnConfirm.title = 'Não é possível confirmar o agendamento';
 	        	bodyData.innerHTML= `<div>
 						        		<div class="-infoAgendamento__text">Dados do Cliente</div>
 							        		<div class="text-center">
-								        		<div class="-infoAgendamento__icons__text">Dados do cliente não encontrado!</div>
+								        		<div class="-infoAgendamento__icons__text">Dados não encontrados, tente novamente mais tarde!</div>
+								        		<div class="-infoAgendamento__icons__text">Não é possível confirmar um agendamento sem os dados do cliente.</div>
 							        		</div>
 						        		</div>
 						        		<div>
@@ -87,3 +95,14 @@ function getUser(agendamento) {
 	http.send(params);
 }
 
+function verifyIfConfirmed(idColaborador, btn){
+	
+	if (idColaborador != 0 ) {
+		btn.disabled = true;
+		btn.title = 'Coleta já confirmada!';
+
+	} else {
+		btn.disabled = false;
+	}
+	
+}

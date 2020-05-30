@@ -37,6 +37,11 @@
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/index.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#datetimepicker1').datetimepicker();
+	});
+</script>
 </head>
 <body>
 	<header class="header">
