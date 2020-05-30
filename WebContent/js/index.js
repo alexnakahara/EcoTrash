@@ -22,36 +22,66 @@ function getUser(agendamento) {
 	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	http.onreadystatechange = function() {
 	    if(http.readyState == 4 && http.status == 200) {
-	        const cliente = JSON.parse(http.response);
-	        console.log('cliente ', cliente);
-	        const endereco = `${cliente.endereco}, ${cliente.endNumero} - ${cliente.bairro},
-	         ${cliente.cidade}/${cliente.uf} - ${cliente.cep}.`;
-	        const data = moment(agendamento.dtAgendada).format('LLL');
-	    	bodyData.innerHTML= `<div>
-    								<div class="-infoAgendamento__text">Dados do Cliente</div>
-    									<div class="-infoAgendamento__icons">
-	    									<i class="fas fa-user"></i>
-	    									<div class="-infoAgendamento__icons__text">${cliente.nome}</div>
-	    									<i class="fas fa-phone-alt"></i>
-	    									<div class="-infoAgendamento__icons__text">${cliente.telefone}</div>
-	    									<i class="fas fa-map-marker-alt"></i>
-	    									<div class="-infoAgendamento__icons__text">${endereco}</div>
-    									</div>
-	    							</div>
-    							<div>
-    								<div class="-infoAgendamento__text">Detalhe da solicitação</div>
-	    								<div class="-infoAgendamento__icons">
-	    									<i class="far fa-calendar-alt"></i>
-	    									<div class="-infoAgendamento__icons__text">${data}</div>
-	    									<i class="far fa-trash-alt"></i>
-	    									<div class="-infoAgendamento__icons__text">${agendamento.titulo}</div>
-	    									<i class="far fa-comment-alt"></i>
-	    									<div class="-infoAgendamento__icons__text">${agendamento.descricao}</div>
-	    								</div>
-    							</div>`;
-	    } else {
-	    	bodyData.innerHTML= 'Desculpe dados não encontrado, tente novamente mais tarde!';
-	    }
+	    	const data = moment(agendamento.dtAgendada).format('LLL');
+	        const objResp = JSON.parse(http.response);
+	        const cliente = {
+	        		bairro: objResp.bairro,
+        			cep: objResp.cep,
+        			cidade: objResp.cidade,
+        			endNumero: objResp.endNumero,
+        			endereco: objResp.endereco,
+        			nome: objResp.nome,
+        			telefone: objResp.telefone,
+        			uf: objResp.uf
+	        };
+	        const btnConfirm = document.querySelector('#confirmarAgendamento');
+	        btnConfirm.disabled = false;
+	        if (cliente.nome || cliente.endereco) { // Garantia que vai ter o dados do cliente
+	        	const endereco = `${cliente.endereco}, ${cliente.endNumero} - ${cliente.bairro},
+	        		${cliente.cidade}/${cliente.uf} - ${cliente.cep}.`;
+	        	bodyData.innerHTML= `<div>
+						        		<div class="-infoAgendamento__text">Dados do Cliente</div>
+							        		<div class="-infoAgendamento__icons">
+								        		<i class="fas fa-user"></i>
+								        		<div class="-infoAgendamento__icons__text">${cliente.nome}</div>
+								        		<i class="fas fa-phone-alt"></i>
+								        		<div class="-infoAgendamento__icons__text">${cliente.telefone}</div>
+								        		<i class="fas fa-map-marker-alt"></i>
+								        		<div class="-infoAgendamento__icons__text">${endereco}</div>
+							        		</div>
+						        		</div>
+						        		<div>
+							        		<div class="-infoAgendamento__text">Detalhe da solicitação</div>
+							        		<div class="-infoAgendamento__icons">
+							        		<i class="far fa-calendar-alt"></i>
+							        		<div class="-infoAgendamento__icons__text">${data}</div>
+							        		<i class="far fa-trash-alt"></i>
+							        		<div class="-infoAgendamento__icons__text">${agendamento.titulo}</div>
+							        		<i class="far fa-comment-alt"></i>
+							        		<div class="-infoAgendamento__icons__text">${agendamento.descricao}</div>
+						        		</div>
+						        	</div>`;
+	        } else {
+	        	btnConfirm.disabled = true;
+	        	bodyData.innerHTML= `<div>
+						        		<div class="-infoAgendamento__text">Dados do Cliente</div>
+							        		<div class="text-center">
+								        		<div class="-infoAgendamento__icons__text">Dados do cliente não encontrado!</div>
+							        		</div>
+						        		</div>
+						        		<div>
+							        		<div class="-infoAgendamento__text">Detalhe da solicitação</div>
+							        		<div class="-infoAgendamento__icons">
+							        		<i class="far fa-calendar-alt"></i>
+							        		<div class="-infoAgendamento__icons__text">${data}</div>
+							        		<i class="far fa-trash-alt"></i>
+							        		<div class="-infoAgendamento__icons__text">${agendamento.titulo}</div>
+							        		<i class="far fa-comment-alt"></i>
+							        		<div class="-infoAgendamento__icons__text">${agendamento.descricao}</div>
+						        		</div>
+						        	</div>`;
+	        }
+	    } 
 	}
 	
 	http.send(params);

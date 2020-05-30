@@ -140,7 +140,7 @@
 						<div class="-infoAgendamento"></div>
 					</div>
 					<div class="modal-footer d-flex justify-content-center">
-						<button type="submit" class="btn btn-danger"
+						<button type="submit" class="btn btn-danger" id="confirmarAgendamento"
 							onclick="onSubmitAgendar()" )>Confirmar Agendamento</button>
 					</div>
 				</div>
