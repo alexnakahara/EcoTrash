@@ -148,4 +148,20 @@ public class AgendamentoDAO {
 		}
 	}
 	
+	public static void deletarAgendamento(int id_agendamento) {
+
+		String sqlInsert = "DELETE FROM agendamento WHERE id_agendamento= ?";
+
+		try (Connection conn = ConnectionFactory.obtemConexao();
+				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
+			stm.setInt(1, id_agendamento);
+			stm.execute();
+
+		} catch (SQLException ex) {
+
+			ex.printStackTrace();
+
+		}
+	}
+	
 }

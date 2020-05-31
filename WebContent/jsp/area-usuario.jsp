@@ -23,10 +23,6 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/style.css">
 	
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/moment.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/moment.locale.js"></script>
 <!-- Para funcionar o component de datepicker -->
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -40,6 +36,12 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/moment.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/moment.locale.js"></script>
+	
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#datetimepicker1').datetimepicker();
@@ -77,7 +79,7 @@
 		
 		<div class="d-flex justify-content-around flex-wrap">
 			<% if (u.getTipoPerfil() == 0) {%>
-				<div class="item-agendamento" data-toggle="modal" data-target="#modalCadastroAgendamento">
+				<div class="item-agendamento" alt="Click para agendar uma coleta" data-toggle="modal" data-target="#modalCadastroAgendamento">
 					<div class="col1">
 						<i class="far fa-calendar-plus"></i>
 					</div>
@@ -150,10 +152,12 @@
 					<div class="modal-body" id="modal-agendamento">
 						<form id="formConfirmarRetirada" class="panel-body" method="post"
 							action="${pageContext.request.contextPath}/ServletController.do">
+							
 							<div class="form-group -form-group2">
-								<label class="control-label text-center"></label> id_colaborador<input
-									type="text" class="form-control" name="id_colaborador"
-									value="<%=u.getIdUsuario()%>" />
+								<label class="control-label text-center">
+									<%= u.getIdUsuario() == 0 ? "id_usuario" : "id_cliente" %>
+								</label>
+								<input type="text" class="form-control" name="id_usuario" value="<%=u.getIdUsuario()%>" />
 							</div>
 
 							<div class="form-group -form-group2">
@@ -168,7 +172,7 @@
 					
 					<div class="modal-footer d-flex justify-content-center">
 						<button type="submit" class="btn btn-danger" id="btn-confirmar"
-							onclick="submitConfirmarRetirada()" )>Confirmar Agendamento</button>
+							onclick="submitConfirmarRetirada()">Confirmar Agendamento</button>
 					</div>
 					
 				</div>
@@ -214,9 +218,12 @@
 							</div>
 						</form>
 					</div>
+
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" onclick="submitAgendar()">Agendar</button>
+						<button type="submit" class="btn btn-danger" id="btn-confirmar"
+							onclick="submitAgendar()">Agendar</button>
 					</div>
+					
 				</div>
 			</div>
 		</div>

@@ -27,17 +27,36 @@ public class ServletController extends HttpServlet {
     
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	
     	if(req.getParameter("acao").equals("Login")) {
+    		
     		this.login(req, resp);
+    		
     	} else if (req.getParameter("acao").equals("Logout")) {
+    		
 			this.logOut(req, resp);
+			
+		} else if (req.getParameter("acao").equals("cancelarAgendamento")) {
+			
+			this.cancelarAgendamento(req,resp);
+			
 		} else if(req.getParameter("acao").equals("confirmarRetirada")) {
+			
 			this.confirmarRetirada(req, resp);
-		}else if(req.getParameter("acao").equals("getUsuario")) {
+			
+		} else if(req.getParameter("acao").equals("getUsuario")) {
+			
 			this.getUsuario(req, resp);
 		}
     }
     
+
+	private void cancelarAgendamento(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	
+		int id_agendamento = Integer.parseInt(req.getParameter("id_agendamento"));
+		AgendamentoDAO.deletarAgendamento(id_agendamento);
+		resp.sendRedirect("jsp/area-usuario.jsp");
+	}
 
 	private void getUsuario(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 	
@@ -55,7 +74,7 @@ public class ServletController extends HttpServlet {
 	}
 
 	private void confirmarRetirada(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		int id_colaborador = Integer.parseInt(req.getParameter("id_colaborador"));
+		int id_colaborador = Integer.parseInt(req.getParameter("id_usuario"));
 		int id_agendamento = Integer.parseInt(req.getParameter("id_agendamento"));
 		AgendamentoDAO.confirmarRetirada(id_colaborador,id_agendamento);
 		resp.sendRedirect("jsp/area-usuario.jsp");

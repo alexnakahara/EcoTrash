@@ -41,8 +41,8 @@ body {
 }
 
 .badge-success {
-    color: #fff !important;
-    background-color: #28a745 !important;
+	color: #fff !important;
+	background-color: #28a745 !important;
 }
 
 .item-agendamento {
@@ -80,9 +80,10 @@ body {
 
 .row2__text {
 	display: grid;
-    grid-template-columns: auto 1fr;
+	grid-template-columns: auto 1fr;
 	padding: 4px;
 	max-height: 59px;
+    overflow: auto;	
 }
 
 .empty-content {
@@ -108,11 +109,21 @@ body {
 	grid-row-gap: 13px;
 }
 
+.-infoAgendamento__content {
+	display: grid;
+	grid-gap: 8px;
+}
+
 .-infoAgendamento__text {
-	text-align: center;
-	font-weight: bold;
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: auto auto;
+	height: 36px; justify-content : center; align-items : center;
+	font-weight : bold;
 	border-bottom: 2px solid;
-	margin-bottom: 10px;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
 }
 
 .-infoAgendamento__icons {
@@ -166,5 +177,8 @@ body {
 	}
 	.-infoAgendamento {
 		display: block;
+	}
+	.-infoAgendamento__text::nth-last-child(2n)  {
+		align-self: start;
 	}
 }

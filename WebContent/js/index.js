@@ -21,8 +21,9 @@ function openAgendamento(agendamento) {
 	form.style.display ='none';
 	document.querySelector('#id_agendamento').value = agendamento.idAgendamento;
 	
-	if(glbUser == 0 ) {
-		console.log('commandAction ==>', inputCommand);
+	if(glbUser.tipoPerfil == 0) {
+		inputCommand.value = 'cancelarAgendamento';
+		btnConfirm.innerText = 'Cancelar Agendamento';
 	}
 	
 	getUser(agendamento);
@@ -47,23 +48,29 @@ function getUser(agendamento) {
 	    	
 	    	const user = JSON.parse(http.response);
 	    	const data = moment(agendamento.dtAgendada).format('LLL');
-	        
-	        if (user.nome || user.endereco) { // Garantia que vai ter o dados do usuário
+
+	    	if (user.nome || user.endereco) { // Garantia que vai ter o dados do usuário
 	        	verifyIfConfirmed(agendamento.idColaborador);
 	        	const endereco = `${user.endereco}, ${user.endNumero} - ${user.bairro},
 	        		${user.cidade}/${user.uf} - ${user.cep}.`;
-	        	bodyData.innerHTML= `<div>
-						        		<div class="-infoAgendamento__text">Dados do ${glbUser.tipoPerfil == 0 ? 'Colaborador' : 'Cliente'}</div>
-							        		<div class="-infoAgendamento__icons">
-								        		<i class="fas fa-user"></i>
-								        		<div class="-infoAgendamento__icons__text">${user.nome}</div>
-								        		<i class="fas fa-phone-alt"></i>
-								        		<div class="-infoAgendamento__icons__text">${user.telefone}</div>
-								        		<i class="fas fa-map-marker-alt"></i>
-								        		<div class="-infoAgendamento__icons__text">${endereco}</div>
-							        		</div>
+	        	bodyData.innerHTML= `<div class="-infoAgendamento__content">
+						        		<div class="-infoAgendamento__text">
+							        		${agendamento.idColaborador != 0 ? `
+							        		<span class="badge badge-success d-flex"> <i class="fas fa-check"></i>
+							        		<div class="ml-2">Confirmado</div>
+							        		</span>` : ``}
+						        			Dados do ${glbUser.tipoPerfil == 0 ? 'Colaborador ' : 'Cliente '}
 						        		</div>
-						        		<div>
+						        		<div class="-infoAgendamento__icons">
+							        		<i class="fas fa-user"></i>
+							        		<div class="-infoAgendamento__icons__text">${user.nome}</div>
+							        		<i class="fas fa-phone-alt"></i>
+							        		<div class="-infoAgendamento__icons__text">${user.telefone}</div>
+							        		<i class="fas fa-map-marker-alt"></i>
+							        		<div class="-infoAgendamento__icons__text">${endereco}</div>
+						        		</div>
+						        	</div>
+						        	<div class="-infoAgendamento__content">
 							        		<div class="-infoAgendamento__text">Detalhes da solicitação</div>
 							        		<div class="-infoAgendamento__icons">
 							        		<i class="far fa-calendar-alt"></i>
@@ -78,20 +85,26 @@ function getUser(agendamento) {
 	        } else {
 	        	const btnFeedBack =  glbUser != 0 ? 'Não é possível confirmar o agendamento' : 'Delete o Agendamento';
 	        	verifyIfConfirmed(agendamento.idColaborador, btnFeedBack);
-	        	bodyData.innerHTML= `<div>
-						        		<div class="-infoAgendamento__text">Dados do ${glbUser.tipoPerfil == 0 ? 'Colaborador' : 'Cliente'}</div>
-							        		<div class="text-center">
-									        	<div class="text-justify">
-										        	${glbUser.tipoPerfil != 0 ? 'Dados não encontrados, tente novamente mais tarde!' : 
-										        	'Seu agendamento de coleta ainda não foi confirmado por nenhum colaborador!'} 
-									        	</div>
-								        		 <div class="text-justify">
-								        		 	${glbUser.tipoPerfil != 0 ? 'Não é possível confirmar um agendamento sem os dados do cliente.' 
-								        		 	: 'Caso queira deleta-lo confirme abaixo'}
-								        		 </div>
-							        		</div>
+	        	bodyData.innerHTML= `<div class="-infoAgendamento__content">
+						        		<div class="-infoAgendamento__text">
+							        		${agendamento.idColaborador != 0 ? `
+							        		<span class="badge badge-success d-flex"> <i class="fas fa-check"></i>
+							        		<div class="ml-2">Confirmado</div>
+							        		</span>` : ``}
+						        			Dados do ${glbUser.tipoPerfil == 0 ? 'Colaborador' : 'Cliente'}
 						        		</div>
-						        		<div>
+							        	<div class="text-center">
+								        	<div class="text-justify">
+									        	${glbUser.tipoPerfil != 0 ? 'Dados não encontrados, tente novamente mais tarde!' : 
+									        	'Seu agendamento de coleta ainda não foi confirmado por nenhum colaborador!'} 
+								        	</div>
+							        		<div class="text-justify">
+							        		 	${glbUser.tipoPerfil != 0 ? 'Não é possível confirmar um agendamento sem os dados do cliente.' 
+							        		 	: 'Caso queira deleta-lo confirme abaixo'}
+							        		</div>
+							        	</div>
+						        		</div>
+						        	<div class="-infoAgendamento__content">
 							        		<div class="-infoAgendamento__text">Detalhes da solicitação</div>
 							        		<div class="-infoAgendamento__icons">
 							        		<i class="far fa-calendar-alt"></i>
