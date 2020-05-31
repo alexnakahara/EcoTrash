@@ -75,8 +75,7 @@ public class UsuarioDao {
 	}
 	
 	public Usuario getUsuario(int id_usuario) {
-		String query = "SELECT tx_nome, tx_telefone, tx_endereco, tx_endNumero, tx_bairro, tx_cep, tx_uf, tx_cidade "
-				+ "FROM usuario WHERE id_usuario =?";
+		String query = "SELECT * FROM usuario WHERE id_usuario =?";
 		
 		try (PreparedStatement stm = conexao.prepareStatement(query)) {
 			
@@ -85,6 +84,8 @@ public class UsuarioDao {
 			Usuario u = new Usuario();
 			
 			if(result.next()) {
+				u.setIdUsuario(result.getInt("id_usuario"));
+				u.setTipoPerfil(result.getInt("tipo_perfil"));
 				u.setNome(result.getString("tx_nome"));
 				u.setTelefone(result.getString("tx_telefone"));
 				u.setEndereco(result.getString("tx_endereco"));

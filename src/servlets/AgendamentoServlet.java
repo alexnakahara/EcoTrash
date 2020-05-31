@@ -6,8 +6,6 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +26,6 @@ public class AgendamentoServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -43,8 +40,8 @@ public class AgendamentoServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String data = request.getParameter("dt_agendamento");
 		response.setContentType("text/html; charset=UTF-8");
-
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");// recebe nesse formato, tem que estar assim
+		// recebe nesse formato, tem que estar assim
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
 
 		try {
 			
@@ -57,16 +54,14 @@ public class AgendamentoServlet extends HttpServlet {
 			Agendamento agendamento = new Agendamento(id, timestamp, descricao, titulo);
 			
 			if(dao.cadastrar(agendamento)) {
-				response.sendRedirect("jsp/area-cliente.jsp");
+				response.sendRedirect("jsp/area-usuario.jsp");
 			} else {
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Ocorreu um erro no agendamento, tente novamente!');");
 				out.println("</script>");
 				request.getRequestDispatcher("jsp/area-cliente.jsp").forward(request, response);
 			}
-			
-			
-			
+					
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

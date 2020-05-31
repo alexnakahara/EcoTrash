@@ -40,6 +40,11 @@ body {
 	font-size: 22px;
 }
 
+.badge-success {
+    color: #fff !important;
+    background-color: #28a745 !important;
+}
+
 .item-agendamento {
 	background-color: white;
 	cursor: pointer;
@@ -48,7 +53,8 @@ body {
 	margin-top: 60px;
 	padding: 30px;
 	border-radius: 10px;
-	box-shadow: 0 1px 10px 0 rgba(241, 234, 234, 0.3)
+	box-shadow: 0 1px 10px 0 rgba(241, 234, 234, 0.3);
+	grid-gap: 10px;
 }
 
 .col1 { /*  coluna do icone calendario */
@@ -65,7 +71,7 @@ body {
 }
 
 .row1 {
-	padding: 10px;
+	padding: 4px;
 	border-bottom: 3px solid;
 	white-space: nowrap;
 	overflow: hidden;
@@ -73,8 +79,10 @@ body {
 }
 
 .row2__text {
-	text-align: justify;
-	padding: 10px;
+	display: grid;
+    grid-template-columns: auto 1fr;
+	padding: 4px;
+	max-height: 59px;
 }
 
 .empty-content {
@@ -104,7 +112,6 @@ body {
 	text-align: center;
 	font-weight: bold;
 	border-bottom: 2px solid;
-	margin: 1;
 	margin-bottom: 10px;
 }
 
@@ -154,7 +161,7 @@ body {
 		word-break: break-word;
 		overflow: hidden;
 	}
-	#btn-confirmar {
+	#btn-fake {
 		display: none;
 	}
 	.-infoAgendamento {

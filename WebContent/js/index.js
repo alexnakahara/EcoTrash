@@ -1,13 +1,30 @@
-function onSubmitAgendar() {
-	document.getElementById("myForm").submit();
+var glbUser;
+
+function getGlobalUser(user) {
+	glbUser = user;
+}
+
+function submitAgendar() {
+	document.getElementById("formCadastrar").submit();
+}
+
+function submitConfirmarRetirada() {
+	document.getElementById("formConfirmarRetirada").submit();
 }
 
 function openAgendamento(agendamento) {
-	const form = document.querySelector('#myForm');
+	const form = document.querySelector('#formConfirmarRetirada');
+	const btnConfirm = document.querySelector('#btn-confirmar'); 
+	const inputCommand = document.querySelector('#commandAction');
 	moment.locale('pt-br');
 	document.querySelector('#titleDetalheColeta').innerHTML = `Detalhe da Coleta - [${agendamento.titulo}]`;
 	form.style.display ='none';
 	document.querySelector('#id_agendamento').value = agendamento.idAgendamento;
+	
+	if(glbUser == 0 ) {
+		console.log('commandAction ==>', inputCommand);
+	}
+	
 	getUser(agendamento);
 }
 
@@ -16,47 +33,38 @@ function openAgendamento(agendamento) {
 function getUser(agendamento) {
 	const bodyData = document.querySelector('.-infoAgendamento');
 	const http = new XMLHttpRequest();
-	const url = window.location.pathname.replace('jsp/area-colaborador.jsp', 'ServletController.do');
-	const params = `acao=getUsuario&id_cliente=${agendamento.idCliente}`;
+	console.log('agendamento ===> ', agendamento);
+	const url = window.location.pathname.replace('jsp/area-usuario.jsp', 'ServletController.do');
+	// Caso glbUser for um pefil 0 ele quer saber os dados do colaborador que confirmou sua coletar
+	// Caso seja um Colaborador ele quer ver os dados do cliente
+	const params = `acao=getUsuario&id_usuario=${ glbUser.tipoPerfil == 0 ? agendamento.idColaborador :agendamento.idCliente}`;
 	http.open('POST', url, true);
 	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-	
+
 	http.onreadystatechange = function() {
 		
 	    if(http.readyState == 4 && http.status == 200) {
 	    	
-	    	const objResp = JSON.parse(http.response);
+	    	const user = JSON.parse(http.response);
 	    	const data = moment(agendamento.dtAgendada).format('LLL');
-	        const btnConfirm = document.querySelector('#confirmarAgendamento'); 
-	        btnConfirm.disabled = false;
-	        const cliente = {										
-	        		bairro: objResp.bairro,
-        			cep: objResp.cep,
-        			cidade: objResp.cidade,
-        			endNumero: objResp.endNumero,
-        			endereco: objResp.endereco,
-        			nome: objResp.nome,
-        			telefone: objResp.telefone,
-        			uf: objResp.uf
-	        };
-
-	        if (cliente.nome || cliente.endereco) { // Garantia que vai ter o dados do cliente
-	        	verifyIfConfirmed(agendamento.idColaborador, btnConfirm);
-	        	const endereco = `${cliente.endereco}, ${cliente.endNumero} - ${cliente.bairro},
-	        		${cliente.cidade}/${cliente.uf} - ${cliente.cep}.`;
+	        
+	        if (user.nome || user.endereco) { // Garantia que vai ter o dados do usuário
+	        	verifyIfConfirmed(agendamento.idColaborador);
+	        	const endereco = `${user.endereco}, ${user.endNumero} - ${user.bairro},
+	        		${user.cidade}/${user.uf} - ${user.cep}.`;
 	        	bodyData.innerHTML= `<div>
-						        		<div class="-infoAgendamento__text">Dados do Cliente</div>
+						        		<div class="-infoAgendamento__text">Dados do ${glbUser.tipoPerfil == 0 ? 'Colaborador' : 'Cliente'}</div>
 							        		<div class="-infoAgendamento__icons">
 								        		<i class="fas fa-user"></i>
-								        		<div class="-infoAgendamento__icons__text">${cliente.nome}</div>
+								        		<div class="-infoAgendamento__icons__text">${user.nome}</div>
 								        		<i class="fas fa-phone-alt"></i>
-								        		<div class="-infoAgendamento__icons__text">${cliente.telefone}</div>
+								        		<div class="-infoAgendamento__icons__text">${user.telefone}</div>
 								        		<i class="fas fa-map-marker-alt"></i>
 								        		<div class="-infoAgendamento__icons__text">${endereco}</div>
 							        		</div>
 						        		</div>
 						        		<div>
-							        		<div class="-infoAgendamento__text">Detalhe da solicitação</div>
+							        		<div class="-infoAgendamento__text">Detalhes da solicitação</div>
 							        		<div class="-infoAgendamento__icons">
 							        		<i class="far fa-calendar-alt"></i>
 							        		<div class="-infoAgendamento__icons__text">${data}</div>
@@ -68,17 +76,23 @@ function getUser(agendamento) {
 						        	</div>`;
 	        
 	        } else {
-	        	btnConfirm.disabled = true;
-	        	btnConfirm.title = 'Não é possível confirmar o agendamento';
+	        	const btnFeedBack =  glbUser != 0 ? 'Não é possível confirmar o agendamento' : 'Delete o Agendamento';
+	        	verifyIfConfirmed(agendamento.idColaborador, btnFeedBack);
 	        	bodyData.innerHTML= `<div>
-						        		<div class="-infoAgendamento__text">Dados do Cliente</div>
+						        		<div class="-infoAgendamento__text">Dados do ${glbUser.tipoPerfil == 0 ? 'Colaborador' : 'Cliente'}</div>
 							        		<div class="text-center">
-								        		<div class="-infoAgendamento__icons__text">Dados não encontrados, tente novamente mais tarde!</div>
-								        		<div class="-infoAgendamento__icons__text">Não é possível confirmar um agendamento sem os dados do cliente.</div>
+									        	<div class="text-justify">
+										        	${glbUser.tipoPerfil != 0 ? 'Dados não encontrados, tente novamente mais tarde!' : 
+										        	'Seu agendamento de coleta ainda não foi confirmado por nenhum colaborador!'} 
+									        	</div>
+								        		 <div class="text-justify">
+								        		 	${glbUser.tipoPerfil != 0 ? 'Não é possível confirmar um agendamento sem os dados do cliente.' 
+								        		 	: 'Caso queira deleta-lo confirme abaixo'}
+								        		 </div>
 							        		</div>
 						        		</div>
 						        		<div>
-							        		<div class="-infoAgendamento__text">Detalhe da solicitação</div>
+							        		<div class="-infoAgendamento__text">Detalhes da solicitação</div>
 							        		<div class="-infoAgendamento__icons">
 							        		<i class="far fa-calendar-alt"></i>
 							        		<div class="-infoAgendamento__icons__text">${data}</div>
@@ -95,14 +109,17 @@ function getUser(agendamento) {
 	http.send(params);
 }
 
-function verifyIfConfirmed(idColaborador, btn){
+function verifyIfConfirmed(idColaborador, title='Coleta já confirmada!') {
+    const btnConfirm = document.querySelector('#btn-confirmar'); 
+   
+    if (glbUser.tipoPerfil!= 0) {
+		if (idColaborador != 0) { // quer dizer que colaborador já confirmou a retirada
+			btnConfirm.disabled = true;
+			btnConfirm.title = title;
 	
-	if (idColaborador != 0 ) {
-		btn.disabled = true;
-		btn.title = 'Coleta já confirmada!';
-
-	} else {
-		btn.disabled = false;
-	}
+		} else {
+			btnConfirm.disabled = false;
+		}
+    }
 	
 }
