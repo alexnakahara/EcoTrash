@@ -50,8 +50,8 @@ function getUser(agendamento) {
 
 	    	if (user.nome || user.endereco) { // Garantia que vai ter o dados do usuário
 	        	verifyIfConfirmed(agendamento.idColaborador);
-	        	const endereco = `${user.endereco}, ${user.endNumero} - ${user.bairro},
-	        		${user.cidade}/${user.uf} - ${user.cep}.`;
+	        	const endereco = `${user.endereco}, ${user.endNumero}, ${user.bairro}, ${user.cidade}-${user.uf}, ${user.cep}`;
+	        	addMaps(endereco);
 	        	bodyData.innerHTML= `<div class="-infoAgendamento__content">
 						        		<div class="-infoAgendamento__text">
 							        		${agendamento.idColaborador != 0 ? `
@@ -82,6 +82,7 @@ function getUser(agendamento) {
 						        	</div>`;
 	        
 	        } else {
+	        	removeMaps(true);
 	        	const btnFeedBack =  glbUser != 0 ? 'Não é possível confirmar o agendamento' : 'Delete o Agendamento';
 	        	verifyIfConfirmed(agendamento.idColaborador, btnFeedBack);
 	        	bodyData.innerHTML= `<div class="-infoAgendamento__content">
@@ -134,4 +135,36 @@ function verifyIfConfirmed(idColaborador, title='Coleta já confirmada!') {
 		}
     }
 	
+}
+
+function addMaps(endereco) {
+	const contentMaps = document.querySelector('#googleMaps');
+	removeMaps(); // garantia que sempre crie um novo endereco
+	const strPatternGoogle = endereco.split(' ').join('%20');
+	contentMaps.innerHTML = `<div class="gmap_canvas">
+								<iframe width="100%" height="300" id="gmap_canvas" 
+									src="https://maps.google.com/maps?q=${strPatternGoogle}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+								</iframe>
+							</div>
+							<style>.mapouter{
+								position:relative;
+								text-align:right;
+								height:300px;
+								width:100%;
+							}.gmap_canvas {
+								overflow:hidden;
+								background:none!important;
+								height:300px;
+								width:100%;
+							}</style>`;
+}
+
+function removeMaps(isNone = false) {
+	const contentMaps = document.querySelector('#googleMaps');
+	
+	if(contentMaps.firstChild){
+		// remove o mapa e ve se quem chamou quer que esconda o container pai
+		contentMaps.firstChild.remove();
+		contentMaps.style.display = isNone ? 'none' : 'block';
+	}
 }

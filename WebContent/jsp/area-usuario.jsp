@@ -159,6 +159,8 @@
 									class="form-control" name="acao" value="confirmarRetirada" id="commandAction"/>
 							</div>
 						</form>
+						
+						<div class="mapouter" id="googleMaps"></div>
 						<div class="-infoAgendamento"></div>
 					</div>
 					
