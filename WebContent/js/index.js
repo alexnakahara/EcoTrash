@@ -34,9 +34,8 @@ function openAgendamento(agendamento) {
 function getUser(agendamento) {
 	const bodyData = document.querySelector('.-infoAgendamento');
 	const http = new XMLHttpRequest();
-	console.log('agendamento ===> ', agendamento);
 	const url = window.location.pathname.replace('jsp/area-usuario.jsp', 'ServletController.do');
-	// Caso glbUser for um pefil 0 ele quer saber os dados do colaborador que confirmou sua coletar
+	// Caso glbUser for um pefil 0 ele quer saber os dados do colaborador que confirmou sua coleta
 	// Caso seja um Colaborador ele quer ver os dados do cliente
 	const params = `acao=getUsuario&id_usuario=${ glbUser.tipoPerfil == 0 ? agendamento.idColaborador :agendamento.idCliente}`;
 	http.open('POST', url, true);

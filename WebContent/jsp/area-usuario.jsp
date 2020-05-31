@@ -22,12 +22,12 @@
 	href="${pageContext.request.contextPath}/css/area-usuario.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/style.css">
-	
+
 <!-- Para funcionar o component de datepicker -->
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+<script src="${pageContext.request.contextPath}/js/moment.js"></script>
+<script src="${pageContext.request.contextPath}/js/moment.locale.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
 <script type="text/javascript"
@@ -36,18 +36,10 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/moment.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/moment.locale.js"></script>
-	
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#datetimepicker1').datetimepicker();
-	});
-</script>
+<script src="https://kit.fontawesome.com/e71e2a1db7.js"
+	crossorigin="anonymous"></script>
 </head>
+
 <body>
 	<header class="header">
 		<div class="header__logo">EcoTrash</div>
@@ -230,12 +222,19 @@
 		<%} %>
 	</div>
 	
+
+
 <script src="${pageContext.request.contextPath}/js/index.js"></script>
 <script type="text/javascript">
 	const user = <%= gson.toJson(u) %>
 	getGlobalUser(user);
+	
+	$(document).ready(function() {
+		$('#datetimepicker1').datetimepicker({
+			locale: 'pt-br'
+		});
+	});
 </script>
-<script src="https://kit.fontawesome.com/e71e2a1db7.js"
-	crossorigin="anonymous"></script>
+
 </body>
 </html>
