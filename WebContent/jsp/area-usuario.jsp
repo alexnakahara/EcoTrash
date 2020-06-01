@@ -47,8 +47,9 @@
 			Usuario u = (Usuario) request.getSession().getAttribute("usuario");
 			AgendamentoDAO agendaDao = new AgendamentoDAO();
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-			ArrayList<Agendamento> listAgenda = u.getTipoPerfil() != 0 ? 
-				agendaDao.listAgendamentosDisponiveis(u.getIdUsuario()) : agendaDao.listAgendamentosByCliente(u.getIdUsuario());
+			ArrayList<Agendamento> listAgenda = u.getTipoPerfil() != 0
+					? agendaDao.listAgendamentosDisponiveis(u.getIdUsuario())
+					: agendaDao.listAgendamentosByCliente(u.getIdUsuario());
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		%>
 		<div class="d-flex justify-content-between align-items-center">
@@ -67,68 +68,77 @@
 	</header>
 	<div class="container">
 
-		<div class="who-am-i"><%= u.getTipoPerfil() == 0 ? "Você é um Cliente" : "Você é um Colaborador" %></div>
-		
+		<div class="who-am-i"><%=u.getTipoPerfil() == 0 ? "Você é um Cliente" : "Você é um Colaborador"%></div>
+
 		<div class="d-flex justify-content-around flex-wrap">
-			<% if (u.getTipoPerfil() == 0) {%>
-				<div class="item-agendamento" alt="Click para agendar uma coleta" data-toggle="modal" data-target="#modalCadastroAgendamento">
-					<div class="col1">
-						<i class="far fa-calendar-plus"></i>
-					</div>
-					<div class="col2">
-						<div class="font-weight-bold text-center">Agende uma coleta!</div>
-					</div>
-				</div>
 			<%
-			}
+				if (u.getTipoPerfil() == 0) {
+			%>
+			<div class="item-agendamento" data-toggle="modal" data-target="#modalCadastroAgendamento">
+				<div class="col1">
+					<i class="far fa-calendar-plus"></i>
+				</div>
+				<div class="col2">
+					<div class="font-weight-bold text-center">Agende uma coleta!</div>
+				</div>
+			</div>
+			<%
+				}
 				if (listAgenda.isEmpty()) {
 					out.print("<div class='empty-content'> Nenhuma coleta disponível no momento!</div>");
 				}
 
 				for (Agendamento item : listAgenda) {
 
-					out.print(
-							"<div class='item-agendamento' data-toggle='modal' data-target='#modalForm' onclick='openAgendamento("
-									+ gson.toJson(item) + ")'>");
+					out.print("<div class='item-agendamento' data-toggle='modal' data-target='#modalForm' onclick='openAgendamento("
+										+ gson.toJson(item) + ")'>"); 
+			%>
+
+				<%
 					if (item.getIdColaborador() != 0) {
-			%>
-			<div class="badge-status">
-				<span class="badge badge-success"> <i class="fas fa-check"></i>
-					<div class="badge-status__text">Confirmado</div>
-				</span>
-			</div>
+				%>
+				<div class="badge-status">
+					<span class="badge badge-success"> <i class="fas fa-check"></i>
+						<div class="badge-status__text">Confirmado</div>
+					</span>
+				</div>
+				<%
+					}
+				%>
+				<div class="col1">
+					<i class="far fa-calendar-alt"></i>
+				</div>
+				<div class="col2">
+					<div class="row1">
+						<div class="font-weight-bold"><%=item.getTitulo()%></div>
+					</div>
+					<div class="row2">
+						<div class="row2__text">
+							<div class="font-weight-bold mr-2">Data:</div>
+							<%=dateFormat.format(item.getDtAgendada())%>
+						</div>
+						<div class="row2__text">
+							<div class="font-weight-bold mr-2">Descrição:</div>
+							<%=item.getDescricao()%>
+						</div>
+					</div>
+				</div>
+				<%
+					if (u.getTipoPerfil() != 0 && item.getIdColaborador() == 0) {
+				%>
+
+				<button class="btn btn-primary" id="btn-fake">Confirmar</button>
+
+				<%
+					}
+				%>
+
+			</div> <!-- fecha a div container dentro da Scriptlet  -->
+
 			<%
-				}
+				} // final for
 			%>
-			<div class="col1">
-				<i class="far fa-calendar-alt"></i>
-			</div>
-			<div class="col2">
-				<div class="row1">
-					<div class="font-weight-bold"><%=item.getTitulo()%></div>
-				</div>
-				<div class="row2">
-					<div class="row2__text">
-						<div class="font-weight-bold mr-2">Data:</div>
-						<%=dateFormat.format(item.getDtAgendada())%>
-					</div>
-					<div class="row2__text">
-						<div class="font-weight-bold mr-2">Descrição:</div>
-						<%=item.getDescricao()%>
-					</div>
-				</div>
-			</div>
-			<% if (u.getTipoPerfil() != 0 && item.getIdColaborador() == 0) { %>
-
-			<button class="btn btn-primary" id="btn-fake">Confirmar</button>
-
-			<% } %>
-			
 		</div>
-
-		<%
-			} // final for
-		%>
 		
 		<!-- Modal Detalhes de Coleta-->
 		<div class="modal" tabindex="-1" role="dialog" id="modalForm">
@@ -144,39 +154,43 @@
 					<div class="modal-body" id="modal-agendamento">
 						<form id="formConfirmarRetirada" class="panel-body" method="post"
 							action="${pageContext.request.contextPath}/ServletController.do">
-							
+
 							<div class="form-group -form-group2">
-								<label class="control-label text-center">
-									<%= u.getIdUsuario() == 0 ? "id_usuario" : "id_cliente" %>
-								</label>
-								<input type="text" class="form-control" name="id_usuario" value="<%=u.getIdUsuario()%>" />
+								<label class="control-label text-center"> <%=u.getIdUsuario() == 0 ? "id_usuario" : "id_cliente"%>
+								</label> <input type="text" class="form-control" name="id_usuario"
+									value="<%=u.getIdUsuario()%>" />
 							</div>
 
 							<div class="form-group -form-group2">
 								<label class="control-label">id_agendamento</label> <input
 									type="number" class="form-control" name="id_agendamento"
 									id="id_agendamento" value="" /> <input type="hidden"
-									class="form-control" name="acao" value="confirmarRetirada" id="commandAction"/>
+									class="form-control" name="acao" value="confirmarRetirada"
+									id="commandAction" />
 							</div>
 						</form>
-						
+
 						<div class="mapouter" id="googleMaps"></div>
 						<div class="-infoAgendamento"></div>
 					</div>
-					
+
 					<div class="modal-footer d-flex justify-content-center">
 						<button type="submit" class="btn btn-danger" id="btn-confirmar"
-							onclick="submitConfirmarRetirada()">Confirmar Agendamento</button>
+							onclick="submitConfirmarRetirada()">Confirmar
+							Agendamento</button>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
-		
-		
+
+
 		<!-- Modal de Cadastro de Agendamento de Coleta -->
-		<% if(u.getTipoPerfil() == 0 ){ %>
-		<div class="modal" tabindex="-1" role="dialog" id="modalCadastroAgendamento">
+		<%
+			if (u.getTipoPerfil() == 0) {
+		%>
+		<div class="modal" tabindex="-1" role="dialog"
+			id="modalCadastroAgendamento">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -187,7 +201,8 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form id="formCadastrar" class="panel-body" method="post" action="${pageContext.request.contextPath}/Agendamento.do">
+						<form id="formCadastrar" class="panel-body" method="post"
+							action="${pageContext.request.contextPath}/Agendamento.do">
 							<div class="form-group">
 								<label class="control-label">Dia e horário de coleta</label> <input
 									hidden type="number" class="form-control" name="id_cliente"
@@ -217,18 +232,20 @@
 						<button type="submit" class="btn btn-danger" id="btn-confirmar"
 							onclick="submitAgendar()">Agendar</button>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
-		<%} %>
-	</div>
-	
+		<%
+			}
+		%>
+	</div> <!-- fecha a div container -->
 
 
-<script src="${pageContext.request.contextPath}/js/index.js"></script>
-<script type="text/javascript">
-	const user = <%= gson.toJson(u) %>
+
+	<script src="${pageContext.request.contextPath}/js/index.js"></script>
+	<script type="text/javascript">
+	const user = <%=gson.toJson(u)%>
 	getGlobalUser(user);
 	
 	$(document).ready(function() {
