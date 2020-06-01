@@ -241,10 +241,8 @@
 		%>
 	</div> <!-- fecha a div container -->
 
-
-
-	<script src="${pageContext.request.contextPath}/js/index.js"></script>
-	<script type="text/javascript">
+<script src="${pageContext.request.contextPath}/js/index.js"></script>
+<script type="text/javascript">
 	const user = <%=gson.toJson(u)%>
 	getGlobalUser(user);
 	

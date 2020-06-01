@@ -59,7 +59,7 @@ public class AgendamentoServlet extends HttpServlet {
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Ocorreu um erro no agendamento, tente novamente!');");
 				out.println("</script>");
-				request.getRequestDispatcher("jsp/area-cliente.jsp").forward(request, response);
+				request.getRequestDispatcher("jsp/area-usuario.jsp").forward(request, response);
 			}
 					
 		} catch (ParseException e) {
