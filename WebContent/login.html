@@ -63,14 +63,12 @@
 	</header>
 	<div class="wrapper fadeInDown">
 		<div id="formContent">
-			<!-- Tabs Titles -->
-
-			<!-- Icon -->
 			<div class="fadeIn first">
 				<img src="img/eco.png" id="icon" alt="User Icon" />
 			</div>
 
-			<form method="post" action="Autenticacao.do">
+			<form method="post" action="ServletController.do">
+				<input type="hidden" name="acao" value="Login">
 				<input type="text" id="email" class="fadeIn second" name="email"
 					placeholder="Digite seu e-mail" /> <input type="password"
 					id="senha" class="fadeIn third" name="senha"
@@ -78,7 +76,6 @@
 					class="fadeIn fourth" value="Entrar" />
 			</form>
 
-			<!-- Remind Passowrd -->
 			<div id="formFooter">
 				<a class="underlineHover" href="cadastro.html">Não tem cadastro?</a>
 			</div>

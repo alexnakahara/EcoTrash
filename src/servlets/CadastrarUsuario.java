@@ -21,7 +21,7 @@ public class CadastrarUsuario extends HttpServlet {
 	private UsuarioDao daoUsuario = new UsuarioDao();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
 		int tipoPerfil = Integer.parseInt(request.getParameter("tipoPerfil"));
 		String documento = request.getParameter("documento");
 		String nome = request.getParameter("nome");
@@ -29,7 +29,7 @@ public class CadastrarUsuario extends HttpServlet {
 		String senha = request.getParameter("senha");
 		String fone = request.getParameter("fone");
 		String data = request.getParameter("dt_nascimento");
-		String endereco = request.getParameter("end");
+		String endereco = request.getParameter("endereco");
 		String numero = request.getParameter("numero");
 		String bairro = request.getParameter("bairro");
 		String cidade = request.getParameter("cidade");
@@ -39,7 +39,7 @@ public class CadastrarUsuario extends HttpServlet {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		
+		response.setContentType("text/html; charset=UTF-8");
 		try {
 			
 			Date dataNascimento = dateFormat.parse(data);

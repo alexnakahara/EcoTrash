@@ -21,8 +21,9 @@
 	<div class="container">
 		<div class="d-flex justify-content-center align-items-center flex-column" style="height: 100vh;">
 			<img src="${pageContext.request.contextPath}/img/logo3.png" style="width: 366px;"/>
-			<h4>Desculpe você não tem acesso a essa página!</h4>
-			<h5>Caso tenha um cadastro efetue o login</h5>
+			<h4>Desculpe ocorreu um erro!</h4>
+			<h5>Caso tenha acesso ao EcoTrash efetue o login</h5>
+			<a class="btn btn-primary mb-1" href="${pageContext.request.contextPath}/login.html">Ir para o Login</a>
 			Exception is: <%=exception%>
 		</div>
 	</div>
