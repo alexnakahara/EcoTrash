@@ -1,7 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS `ecotrash2020` DEFAULT CHARACTER SET utf8 ;
-USE `ecotrash` ;
+USE `ecotrash2020` ;
 -- -----------------------------------------------------
--- Table Usuário
+-- Table UsuÃ¡rio
 -- -----------------------------------------------------
 CREATE TABLE `usuario` (
   `id_usuario` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -46,7 +46,7 @@ CREATE TABLE `plano` (
   PRIMARY KEY (`id_plano`))
 ENGINE = InnoDB; 
 -- -----------------------------------------------------
--- Table Serviço
+-- Table ServiÃ§o
 -- -----------------------------------------------------
 CREATE TABLE `servico` (
   `id_servico` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -79,7 +79,7 @@ CREATE TABLE  `pagamento` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table Pagamento 2 Para usuários que não tem cadastro
+-- Table Pagamento 2 Para usuÃ¡rios que nÃ£o tem cadastro
 -- -----------------------------------------------------
 CREATE TABLE  `pagamento2` (
   `id_pagamento` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -95,18 +95,4 @@ CREATE TABLE  `pagamento2` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE perguntaHome (
-id INT NOT NULL PRIMARY KEY auto_increment,
-idUsuario int(45),
-isRep boolean,
-nome VARCHAR(126),
-titulo VARCHAR(126),
-texto TEXT
-);
-CREATE TABLE resposta (
-id INT NOT NULL PRIMARY KEY auto_increment,
-nome VARCHAR(126),
-texto VARCHAR(512),
-fk_pergunta_id INT NOT NULL,
-FOREIGN KEY (fk_pergunta_id)
-REFERENCES pergunta(id));
+SELECT Usuario;
