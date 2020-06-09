@@ -94,13 +94,24 @@ public class ServletController extends HttpServlet {
 		AutenticacaoDAO dao = new AutenticacaoDAO();
 		resp.setContentType("text/html");
 
-		if (dao.autenticarUsuario(tx_email, tx_senha)) {
-
-			Usuario usuario = dao.getUsuario(tx_email, tx_senha);
-			req.getSession().setAttribute("usuario", usuario);
-			resp.sendRedirect("jsp/area-usuario.jsp");
-
-		} else {
+		try {
+			if (dao.autenticarUsuario(tx_email, tx_senha)) {
+				
+				Usuario usuario = dao.getUsuario(tx_email, tx_senha);
+				req.getSession().setAttribute("usuario", usuario);
+				resp.sendRedirect("jsp/area-usuario.jsp");
+				
+			} else {
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('E-mail ou senha inválida!!');");
+				out.println("</script>");
+				req.getRequestDispatcher("jsp/login.jsp").include(req, resp);
+			}
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('E-mail ou senha inválida!!');");
 			out.println("</script>");
