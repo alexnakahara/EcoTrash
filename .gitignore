@@ -1,2 +1,6 @@
 
+build/
+
+.classpath
+
 src/dao/ConnectionFactory.java

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,25 +15,25 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous" />
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/style.css">
+	
 </head>
 <body>
 	<header>
 		<div class="desk-menu">
 			<div class="logo">
-				<img class="logo__img" src="img/logo.png" alt="">
+				<img class="logo__img" src="${pageContext.request.contextPath}/img/logo3.png" alt="">
 			</div>
 			<div class="menu">
-				<a href="" class="menu__text">Nossa missão</a> <a href=""
-					class="menu__text">Seja Colaborador</a> <a href="agendamento.html"
-					class="menu__text">Agendamento</a> <a href="simula.html"
-					class="menu__text">Serviços</a> <a href="" class="menu__text">Fale
-					Conosco</a>
+				<a href="${pageContext.request.contextPath}/index.html" class="menu__text">Home</a> 
+				<a href="${pageContext.request.contextPath}/simula.html" class="menu__text">Serviços</a> 
+				<a href="${pageContext.request.contextPath}/quemsomos.html" class="menu__text">Quem Somos</a>
 			</div>
-			<a href="login.html" class="login"><i class="fas fa-user"></i></a>
-
+			<a href="${pageContext.request.contextPath}/jsp/login.jsp" class="login"><i class="fas fa-user"></i></a>
+	
 		</div>
-
+	
 		<div class="mobile-menu">
 			<nav class="navbar navbar-light">
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -43,11 +45,10 @@
 			</nav>
 			<div class="collapse" id="navbarToggleExternalContent">
 				<div class="collapse__menu">
-					<div class="menu__text">Nossa missão</div>
-					<div class="menu__text">Regras de uso</div>
-					<div class="menu__text">Seja Colaborador</div>
-					<div class="menu__text">Mensalidade</div>
-					<div class="menu__text">Fale Conosco</div>
+				<a href="${pageContext.request.contextPath}/index.html" class="menu__text">Home</a> 
+				<a href="${pageContext.request.contextPath}/simula.html" class="menu__text">Serviços</a> 
+				<a href="${pageContext.request.contextPath}/quemsomos.html" class="menu__text">Quem Somos</a>
+				<a href="${pageContext.request.contextPath}/jsp/login.jsp" class="menu__text">Entrar</i></a>
 				</div>
 			</div>
 		</div>
@@ -56,7 +57,7 @@
 		<div class="titulo">
 			<h2>Faça seu cadastro</h2>
 		</div>
-		<form class="form-lg" action="CadastrarUsuario.do" method="post">
+		<form class="form-lg" action="${pageContext.request.contextPath}/CadastrarUsuario.do" method="post">
 			<div class="form-group">
 				<label for="nome">Nome</label> <input type="text"
 					class="form-control" id="nome" name="nome">
@@ -67,7 +68,6 @@
 						class="form-control" id="tipoPerfil" name="tipoPerfil">
 						<option value="0">Cliente</option>
 						<option value="1">Colaborador</option>
-						<option value="3">Ambos(Cliente e Colaborador)</option>
 					</select>
 				</div>
 				<div class="form-group col-md-6">
@@ -133,17 +133,17 @@
 		</form>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-		crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	crossorigin="anonymous"></script>
 
 </body>
 </html>

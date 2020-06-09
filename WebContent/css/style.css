@@ -1,12 +1,12 @@
 body {
 	font-family: Arial !important;
 	font-size: 14px !important;
-	background-image: url(../img/back.jpg);
+	background-image:url(../img/back.jpg);
+	background-size: cover;
 }
 
 header {
 	background-color: #73bf45;
-	height: 70px;
 }
 
 /* remove a navbar em desktop */
@@ -30,13 +30,11 @@ header {
 
 .menu {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	grid-row-gap: 1rem;
-	width: 868px;
-	margin: auto;
-	background-color: #73bf45;
-	height: 70px;
-	align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+    background-color: #73bf45;
+    height: 70px;
+    align-items: center;
 }
 
 .menu__text {
@@ -75,10 +73,11 @@ header {
 	padding: 30px;
 }
 
-.form-lg {
+.form-lg { /* Container padrão de formulário  */
 	background: white;
 	padding: 16px;
 	margin-bottom: 1rem;
+	border-radius: 6px;
 }
 
 .-flexcenter {
@@ -98,7 +97,6 @@ header {
 	color: white;
 }
 
-
 @media screen and (max-width: 700px) {
 	/* menu */
 	header {
@@ -109,14 +107,15 @@ header {
 	}
 	.mobile-menu {
 		display: block !important;
-		background-color: #50fa7b !important;
+		background-color: #73bf45 !important;
 	}
 	.navbar {
 		border-bottom: 1px solid black !important;
 	}
 	.collapse__menu {
-		position: relative;
-		background-color: #50fa7b !important;
+		display: flex;
+    	flex-direction: column;
+		background-color: #73bf45 !important;
 		border-bottom: 1px solid black;
 		z-index: 9;
 	}

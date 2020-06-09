@@ -35,19 +35,17 @@
 	<header>
 		<div class="desk-menu">
 			<div class="logo">
-				<img class="logo__img" src="img/logo.png" alt="">
+				<img class="logo__img" src="img/logo3.png" alt="">
 			</div>
 			<div class="menu">
-				<a href="" class="menu__text">Nossa missão</a> <a href=""
-					class="menu__text">Seja Colaborador</a> <a href="agendamento.html"
-					class="menu__text">Agendamento</a> <a href="simula.html"
-					class="menu__text">Serviços</a> <a href="" class="menu__text">Fale
-					Conosco</a>
+				<a href="index.html" class="menu__text">Home</a> 
+				<a href="simula.html" class="menu__text">Serviços</a> 
+				<a href="quemsomos.html" class="menu__text">Quem Somos</a>
 			</div>
-			<a href="login.html" class="login"><i class="fas fa-user"></i></a>
-
+			<a href="jsp/login.jsp" class="login"><i class="fas fa-user"></i></a>
+	
 		</div>
-
+	
 		<div class="mobile-menu">
 			<nav class="navbar navbar-light">
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -59,87 +57,93 @@
 			</nav>
 			<div class="collapse" id="navbarToggleExternalContent">
 				<div class="collapse__menu">
-					<div class="menu__text">Nossa missão</div>
-					<div class="menu__text">Regras de uso</div>
-					<div class="menu__text">Seja Colaborador</div>
-					<div class="menu__text">Mensalidade</div>
-					<div class="menu__text">Fale Conosco</div>
+				<a href="index.html" class="menu__text">Home</a> 
+				<a href="simula.html" class="menu__text">Serviços</a> 
+				<a href="quemsomos.html" class="menu__text">Quem Somos</a>
+				<a href="jsp/login.jsp" class="menu__text">Entrar</i></a>
 				</div>
 			</div>
 		</div>
 	</header>
 	<div class="container">
 		<div class="titulo">
-			<h2>Contrate um plano</h2>
+			<h2 class="font-weight-bold">Nosso Serviço com cada tipo de perfil</h2>
 		</div>
 		<div class="content-cards">
 			<div class="card">
 				<img src="img/mensal.png" class="card-img-top" alt="...">
 				<div class="card-body">
-					<h5 class="card-title">Mensal</h5>
+					<h5 class="card-title">Cliente</h5>
+					<div class="-line"></div>
 					<p class="card-text">
-						Plano Mensal de serviços da Eco Trash, fazendo aproximadamente de
-						3 a 5 coletas por mensalidade. Para clientes que esporadicamente
-						precisam de coletas em meses pontuais.<br>
+						Serviço destinado a pessoas ou empresas que querem achar alguém para coletar seu lixo
+						ou algo ecológico. 
+						Um cliente se cadastra passando seus dados pessoais e 
+						endereço e assim já pode marcar um agendamento!
 					</p>
 					<hr>
-					<h4 class="card-text" id="preco">1 X 150$ *</h4>
-					<p class="card-text" id="rodape">* Pago no Cartão de crédito,
-						ou boleto bancário</p>
-					<hr>
-					<a href="pagamentoMensal.html" class="btn btn-dark"> Contratar</a>
-				</div>
-			</div>
-			<div class="card">
-				<img src="img/trimestral.jpeg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">Trimestral</h5>
-					<p class="card-text">Plano mensal de serviços da EcoTrash,
-						fazendo aproximadamente de 12 a 15 coletas no Período trimestral.
-						Recomendado para clientes que obtém comércio ou que produz grande
-						quantidade de produtos recicláveis a serem descartados pelas suas
-						residências.</p>
-					<hr>
+				<!-- 	
 					<h4 class="card-text" id="preco">3 X 120$ *</h4>
 					<p class="card-text" id="rodape">* Parcelas pagas em 3 vezes no
 						Cartão de crédito, ou a emissão de três boletos bancários com
 						datas sucetivas</p>
+					<hr> -->
+				</div>
+			</div>
+			
+			<div class="card">
+				<img src="img/trimestral.jpeg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Colaborador</h5>
+					<div class="-line"></div>
+					<p class="card-text">
+    					Ideal para empresas, catadores e pessoas que trabalham com reciclagem.
+    					Se cadastrando como um colaborador você pode visualizar todas os agendamentos
+    					de coleta com seus respectivos detalhes(ex: 1Kg de papelão) e endereço.
+					</p>
 					<hr>
-					<a href="pagamentoTrimestral.html" class="btn btn-dark">Contratar</a>
+					<!-- <h4 class="card-text" id="preco">3 X 120$ *</h4>
+					<p class="card-text" id="rodape">* Parcelas pagas em 3 vezes no
+						Cartão de crédito, ou a emissão de três boletos bancários com
+						datas sucetivas</p>
+					<hr> -->
 				</div>
 			</div>
 			<div class="card">
 				<img src="img/anual.png" class="card-img-top" alt="...">
 				<div class="card-body">
-					<h5 class="card-title">Anual</h5>
-					<p class="card-text">Plano Anual de serviços da EcoTrash,
-						fazendo aproximadamente 50 coletas durante o ano. Recomendado para
-						clientes de suas residências e ambientes corporativos que produzem
-						grandes quantidades de material reciclável a ser descartado e que
-						é necessário para o ano todo.</p>
-					<hr>
+					<h5 class="card-title">Relação</h5>
+					<div class="-line"></div>
+					<p class="card-text">
+    					Quando o cliente agendar uma coleta o colaborador vai conseguir ver
+    					seus detalhes, e decidir se lhe interessa ou não. Caso interesse o
+    					Colaborador irá confirmar, e assim o cliente irá ficar ciente que 
+    					alguém confirmou. Desta forma ambas as partes conseguem entrar em contato.
+					</p>
+					 <hr>
+					<!--
 					<h4 class="card-text" id="preco">12 X 99.90$ *</h4>
 					<p class="card-text" id="rodape">* Parcelas pagas em 12 vezes
 						no Cartão de crédito, ou a emissão de doze boletos bancários com
 						datas sucetivas</p>
 					<hr>
-					<a href="pagamentoAnual.html" class="btn btn-dark">Contratar</a>
+					<a href="pagamentoAnual.html" class="btn btn-dark">Contratar</a> -->
+					<a href="jsp/cadastro.jsp" class="btn btn-dark d-flex justify-content-center">Cadastre-se</a> 
 				</div>
 			</div>
 		</div>
 		
 		
-		<script src="js/index.js"></script>
-		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-			crossorigin="anonymous"></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-			crossorigin="anonymous"></script>
-		<script
-			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-			crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	crossorigin="anonymous"></script>
 </body>
 </html>
