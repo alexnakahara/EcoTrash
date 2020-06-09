@@ -17,7 +17,7 @@ public class PagamentoAnual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			//Get Data
+		request.setCharacterEncoding("UTF-8");
 		String nomeCartao = request.getParameter("nome");
 		String mail = request.getParameter("mail");
 		String cpf = request.getParameter("cpf");
@@ -25,6 +25,7 @@ public class PagamentoAnual extends HttpServlet {
 		int cvv = Integer.parseInt(request.getParameter("cvv"));
 		int plano = 3;
 		
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		RequestDispatcher view;
 		Pagamento p = new Pagamento(mail, cpf, nomeCartao, numCartao, cvv, plano);	

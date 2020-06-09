@@ -1,7 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS `ecotrash2020` DEFAULT CHARACTER SET utf8 ;
 USE `ecotrash2020` ;
 -- -----------------------------------------------------
--- Table Usu√°rio
+-- Table Usu·rio
 -- -----------------------------------------------------
 CREATE TABLE `usuario` (
   `id_usuario` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -32,7 +32,7 @@ CREATE TABLE `agendamento` (
   `tx_titulo` varchar(100) NOT NULL,
   `tx_descricao` varchar(250) DEFAULT NULL,
    CONSTRAINT fk_cliente FOREIGN KEY (id_cliente) REFERENCES usuario (id_usuario),
-    CONSTRAINT fk_colaborador FOREIGN KEY (id_colaborador) REFERENCES usuario (id_usuario)
+   CONSTRAINT fk_colaborador FOREIGN KEY (id_colaborador) REFERENCES usuario (id_usuario)
 ) ENGINE=InnoDB;
 
 -- -----------------------------------------------------
@@ -46,7 +46,7 @@ CREATE TABLE `plano` (
   PRIMARY KEY (`id_plano`))
 ENGINE = InnoDB; 
 -- -----------------------------------------------------
--- Table Servi√ßo
+-- Table ServiÁo
 -- -----------------------------------------------------
 CREATE TABLE `servico` (
   `id_servico` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -79,7 +79,7 @@ CREATE TABLE  `pagamento` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table Pagamento 2 Para usu√°rios que n√£o tem cadastro
+-- Table Pagamento 2 Para usu·rios que n„o tem cadastro
 -- -----------------------------------------------------
 CREATE TABLE  `pagamento2` (
   `id_pagamento` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -94,5 +94,3 @@ CREATE TABLE  `pagamento2` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
