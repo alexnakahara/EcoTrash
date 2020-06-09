@@ -98,11 +98,11 @@ public class AgendamentoDAO {
 		}
 	}
 	
-	// Lista agendamentos que o colaborador confirmou os q estão disponiveis
+	// Lista agendamentos que o colaborador confirmou e os q estão disponiveis
 	public ArrayList<Agendamento> listAgendamentosDisponiveis(int id_colaborado) { 
 		String query = "SELECT * FROM agendamento WHERE id_colaborador = ?\r\n"
-				+ "UNION\r\n"
-				+ "SELECT * FROM agendamento WHERE dt_agendada >= UTC_TIMESTAMP() AND id_colaborador IS NULL;";
+						+ "UNION\r\n"
+						+ "SELECT * FROM agendamento WHERE dt_agendada >= UTC_TIMESTAMP() AND id_colaborador IS NULL;";
 
 		try (PreparedStatement pst = conexao.prepareStatement(query)) {
 
