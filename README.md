@@ -9,10 +9,12 @@ O objetivo do projeto foi gerar valor de alguma forma para as pessoas, e princip
 Criando um agendamento de remoção de lixo
 
 <div style="display: flex; justify-content:space-between">
-<img align="right" src="resources/schedule.png" width="47%"/>
+<img  src="resources/schedule.png" width="47%"/>
 
-<img align="left" src="resources/custumer.png" width="47%" />
+<img src="resources/custumer.png" width="47%" />
 </div>
+
+<br/>
 
 ## Área do coletador
 Confirmando uma retirada
