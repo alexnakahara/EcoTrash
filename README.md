@@ -1,13 +1,11 @@
 # EcoTrash
-Projeto avaliativo da faculdade que tinha como requisito utilizar a
-tecnologia aprendida no semestre que foi Java Web com JSP e Servlet.
+This is a university assessment project that required the use of the technologies learned during the semester, specifically Java Web with JSP and Servlets.
 
-O objetivo do projeto foi gerar valor de alguma forma para as pessoas, e principalmente para ao meio ambiente. Então, foi desenvolvido o EcoTrash um site web, onde pessoas achariam pessoas dispostas a coletar seu lixo ecológico, e assim tirar alguma renda desse serviço. 
+The goal of the project was to generate value for people, with a particular focus on environmental sustainability. To achieve this, EcoTrash was developed as a web platform where individuals can find people willing to collect recyclable waste, allowing them to properly dispose of their waste while enabling others to generate income through this service.
 
-## Área do cliente
+## Customer Portal
 
-Criando um agendamento de remoção de lixo
-
+Schedule Waste Collection
 <div style="display: flex; justify-content:space-between">
 <img  src="resources/schedule.png" width="47%"/>
 
@@ -16,6 +14,6 @@ Criando um agendamento de remoção de lixo
 
 <br/>
 
-## Área do coletador
-Confirmando uma retirada
+## Worker Area
+Pickup Confirmed
 <img  src="resources/accept.gif" width="100%" />
